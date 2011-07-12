@@ -15,12 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls.defaults import *
+from django.forms import ModelForm
+from kapua.forms import FormMixin
+from kapua.address.models import Address
 
-urlpatterns = patterns('kapua.people.views',
-	(r'^$', 'index'),
-	(r'^add/$', 'add'),
-	(r'^(?P<person_id>\d+)/edit/$', 'edit'),
-	(r'^(?P<person_id>\d+)/$', 'detail'),
-)
+class AddressForm(FormMixin, ModelForm):
+	class Meta:
+		model = Address
 

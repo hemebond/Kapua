@@ -1,0 +1,1142 @@
+[
+  { "fields" : { "description" : "NZ European/Pākehā",
+        "ministry_code" : 111
+      },
+    "model" : "people.ethnicity",
+    "pk" : 1
+  },
+  { "fields" : { "description" : "British/Irish",
+        "ministry_code" : 121
+      },
+    "model" : "people.ethnicity",
+    "pk" : 2
+  },
+  { "fields" : { "description" : "Dutch",
+        "ministry_code" : 122
+      },
+    "model" : "people.ethnicity",
+    "pk" : 3
+  },
+  { "fields" : { "description" : "Greek",
+        "ministry_code" : 123
+      },
+    "model" : "people.ethnicity",
+    "pk" : 4
+  },
+  { "fields" : { "description" : "Polish",
+        "ministry_code" : 124
+      },
+    "model" : "people.ethnicity",
+    "pk" : 5
+  },
+  { "fields" : { "description" : "South Slav",
+        "ministry_code" : 125
+      },
+    "model" : "people.ethnicity",
+    "pk" : 6
+  },
+  { "fields" : { "description" : "Italian",
+        "ministry_code" : 126
+      },
+    "model" : "people.ethnicity",
+    "pk" : 7
+  },
+  { "fields" : { "description" : "German",
+        "ministry_code" : 127
+      },
+    "model" : "people.ethnicity",
+    "pk" : 8
+  },
+  { "fields" : { "description" : "Australian",
+        "ministry_code" : 128
+      },
+    "model" : "people.ethnicity",
+    "pk" : 9
+  },
+  { "fields" : { "description" : "Other European",
+        "ministry_code" : 129
+      },
+    "model" : "people.ethnicity",
+    "pk" : 10
+  },
+  { "fields" : { "description" : "Māori",
+        "ministry_code" : 211
+      },
+    "model" : "people.ethnicity",
+    "pk" : 11
+  },
+  { "fields" : { "description" : "Samoan",
+        "ministry_code" : 311
+      },
+    "model" : "people.ethnicity",
+    "pk" : 12
+  },
+  { "fields" : { "description" : "Cook Islands Maori",
+        "ministry_code" : 321
+      },
+    "model" : "people.ethnicity",
+    "pk" : 13
+  },
+  { "fields" : { "description" : "Tongan",
+        "ministry_code" : 331
+      },
+    "model" : "people.ethnicity",
+    "pk" : 14
+  },
+  { "fields" : { "description" : "Niuean",
+        "ministry_code" : 341
+      },
+    "model" : "people.ethnicity",
+    "pk" : 15
+  },
+  { "fields" : { "description" : "Tokelauan",
+        "ministry_code" : 351
+      },
+    "model" : "people.ethnicity",
+    "pk" : 16
+  },
+  { "fields" : { "description" : "Fijian",
+        "ministry_code" : 361
+      },
+    "model" : "people.ethnicity",
+    "pk" : 17
+  },
+  { "fields" : { "description" : "Other Pacific Peoples",
+        "ministry_code" : 371
+      },
+    "model" : "people.ethnicity",
+    "pk" : 18
+  },
+  { "fields" : { "description" : "Filipino",
+        "ministry_code" : 411
+      },
+    "model" : "people.ethnicity",
+    "pk" : 19
+  },
+  { "fields" : { "description" : "Cambodian",
+        "ministry_code" : 412
+      },
+    "model" : "people.ethnicity",
+    "pk" : 20
+  },
+  { "fields" : { "description" : "Vietnamese",
+        "ministry_code" : 413
+      },
+    "model" : "people.ethnicity",
+    "pk" : 21
+  },
+  { "fields" : { "description" : "Other Southeast Asian",
+        "ministry_code" : 414
+      },
+    "model" : "people.ethnicity",
+    "pk" : 22
+  },
+  { "fields" : { "description" : "Chinese",
+        "ministry_code" : 421
+      },
+    "model" : "people.ethnicity",
+    "pk" : 23
+  },
+  { "fields" : { "description" : "Indian",
+        "ministry_code" : 431
+      },
+    "model" : "people.ethnicity",
+    "pk" : 24
+  },
+  { "fields" : { "description" : "Sri Lankan",
+        "ministry_code" : 441
+      },
+    "model" : "people.ethnicity",
+    "pk" : 25
+  },
+  { "fields" : { "description" : "Japanese",
+        "ministry_code" : 442
+      },
+    "model" : "people.ethnicity",
+    "pk" : 26
+  },
+  { "fields" : { "description" : "Korean",
+        "ministry_code" : 443
+      },
+    "model" : "people.ethnicity",
+    "pk" : 27
+  },
+  { "fields" : { "description" : "Other Asian",
+        "ministry_code" : 444
+      },
+    "model" : "people.ethnicity",
+    "pk" : 28
+  },
+  { "fields" : { "description" : "Middle Eastern",
+        "ministry_code" : 511
+      },
+    "model" : "people.ethnicity",
+    "pk" : 29
+  },
+  { "fields" : { "description" : "Latin American",
+        "ministry_code" : 521
+      },
+    "model" : "people.ethnicity",
+    "pk" : 30
+  },
+  { "fields" : { "description" : "African",
+        "ministry_code" : 531
+      },
+    "model" : "people.ethnicity",
+    "pk" : 31
+  },
+  { "fields" : { "description" : "Other Ethnicity",
+        "ministry_code" : 611
+      },
+    "model" : "people.ethnicity",
+    "pk" : 32
+  },
+  { "fields" : { "description" : "Not stated",
+        "ministry_code" : 999
+      },
+    "model" : "people.ethnicity",
+    "pk" : 33
+  },
+  { "fields" : { "description" : "Te Aupouri",
+        "ministry_code" : "0101"
+      },
+    "model" : "people.iwi",
+    "pk" : 1
+  },
+  { "fields" : { "description" : "Ngati Kahu",
+        "ministry_code" : "0102"
+      },
+    "model" : "people.iwi",
+    "pk" : 2
+  },
+  { "fields" : { "description" : "Ngati Kuri",
+        "ministry_code" : "0103"
+      },
+    "model" : "people.iwi",
+    "pk" : 3
+  },
+  { "fields" : { "description" : "Ngapuhi",
+        "ministry_code" : "0104"
+      },
+    "model" : "people.iwi",
+    "pk" : 4
+  },
+  { "fields" : { "description" : "Ngapuhi ki Whaingaroa-Ngati Kahu ki Whaingaroa",
+        "ministry_code" : "0105"
+      },
+    "model" : "people.iwi",
+    "pk" : 5
+  },
+  { "fields" : { "description" : "Te Rarawa",
+        "ministry_code" : "0106"
+      },
+    "model" : "people.iwi",
+    "pk" : 6
+  },
+  { "fields" : { "description" : "Ngai Takoto",
+        "ministry_code" : "0107"
+      },
+    "model" : "people.iwi",
+    "pk" : 7
+  },
+  { "fields" : { "description" : "Ngati Wai",
+        "ministry_code" : "0108"
+      },
+    "model" : "people.iwi",
+    "pk" : 8
+  },
+  { "fields" : { "description" : "Ngati Whatua",
+        "ministry_code" : "0109"
+      },
+    "model" : "people.iwi",
+    "pk" : 9
+  },
+  { "fields" : { "description" : "Te Kawerau",
+        "ministry_code" : "0110"
+      },
+    "model" : "people.iwi",
+    "pk" : 10
+  },
+  { "fields" : { "description" : "Te Uri-o Hau",
+        "ministry_code" : "0111"
+      },
+    "model" : "people.iwi",
+    "pk" : 11
+  },
+  { "fields" : { "description" : "Te Roroa",
+        "ministry_code" : "0112"
+      },
+    "model" : "people.iwi",
+    "pk" : 12
+  },
+  { "fields" : { "description" : "Te Tai Tokerau/Tamaki Makau Rau (Northland/Auckland) Region, not further defined",
+        "ministry_code" : "0100"
+      },
+    "model" : "people.iwi",
+    "pk" : 13
+  },
+  { "fields" : { "description" : "Ngati Hako",
+        "ministry_code" : "0201"
+      },
+    "model" : "people.iwi",
+    "pk" : 14
+  },
+  { "fields" : { "description" : "Ngati Hei",
+        "ministry_code" : "0202"
+      },
+    "model" : "people.iwi",
+    "pk" : 15
+  },
+  { "fields" : { "description" : "Ngati Maru (Marutuahu)",
+        "ministry_code" : "0203"
+      },
+    "model" : "people.iwi",
+    "pk" : 16
+  },
+  { "fields" : { "description" : "Ngati Paoa",
+        "ministry_code" : "0204"
+      },
+    "model" : "people.iwi",
+    "pk" : 17
+  },
+  { "fields" : { "description" : "Patukirikiri",
+        "ministry_code" : "0205"
+      },
+    "model" : "people.iwi",
+    "pk" : 18
+  },
+  { "fields" : { "description" : "Ngati Porou ki Harataunga ki Mataora",
+        "ministry_code" : "0206"
+      },
+    "model" : "people.iwi",
+    "pk" : 19
+  },
+  { "fields" : { "description" : "Ngati Pukenga ki Waiau",
+        "ministry_code" : "0207"
+      },
+    "model" : "people.iwi",
+    "pk" : 20
+  },
+  { "fields" : { "description" : "Ngati Rahiri Tumutumu",
+        "ministry_code" : "0208"
+      },
+    "model" : "people.iwi",
+    "pk" : 21
+  },
+  { "fields" : { "description" : "Ngati Tai",
+        "ministry_code" : "0209"
+      },
+    "model" : "people.iwi",
+    "pk" : 22
+  },
+  { "fields" : { "description" : "Ngati Tamatera",
+        "ministry_code" : "0210"
+      },
+    "model" : "people.iwi",
+    "pk" : 23
+  },
+  { "fields" : { "description" : "Ngati Tara Tokanui",
+        "ministry_code" : "0211"
+      },
+    "model" : "people.iwi",
+    "pk" : 24
+  },
+  { "fields" : { "description" : "Ngati Whanaunga",
+        "ministry_code" : "0212"
+      },
+    "model" : "people.iwi",
+    "pk" : 25
+  },
+  { "fields" : { "description" : "Hauraki (Coromandel) Region, not further defined",
+        "ministry_code" : "0200"
+      },
+    "model" : "people.iwi",
+    "pk" : 26
+  },
+  { "fields" : { "description" : "Ngati Haua (Waikato)",
+        "ministry_code" : "0301"
+      },
+    "model" : "people.iwi",
+    "pk" : 27
+  },
+  { "fields" : { "description" : "Ngati Maniapoto",
+        "ministry_code" : "0302"
+      },
+    "model" : "people.iwi",
+    "pk" : 28
+  },
+  { "fields" : { "description" : "Ngati Raukawa (Waikato)",
+        "ministry_code" : "0303"
+      },
+    "model" : "people.iwi",
+    "pk" : 29
+  },
+  { "fields" : { "description" : "Waikato",
+        "ministry_code" : "0304"
+      },
+    "model" : "people.iwi",
+    "pk" : 30
+  },
+  { "fields" : { "description" : "Waikato/Te Rohe Potae (Waikato/King Country) Region, not further defined",
+        "ministry_code" : "0300"
+      },
+    "model" : "people.iwi",
+    "pk" : 31
+  },
+  { "fields" : { "description" : "Ngati Pikiao (Te Arawa)",
+        "ministry_code" : "0401"
+      },
+    "model" : "people.iwi",
+    "pk" : 32
+  },
+  { "fields" : { "description" : "Ngati Rangiteaorere (Te Arawa)",
+        "ministry_code" : "0402"
+      },
+    "model" : "people.iwi",
+    "pk" : 33
+  },
+  { "fields" : { "description" : "Ngati Rangitihi (Te Arawa)",
+        "ministry_code" : "0403"
+      },
+    "model" : "people.iwi",
+    "pk" : 34
+  },
+  { "fields" : { "description" : "Ngati Rangiwewehi (Te Arawa)",
+        "ministry_code" : "0404"
+      },
+    "model" : "people.iwi",
+    "pk" : 35
+  },
+  { "fields" : { "description" : "Tapuika (Te Arawa)",
+        "ministry_code" : "0405"
+      },
+    "model" : "people.iwi",
+    "pk" : 36
+  },
+  { "fields" : { "description" : "Tarawhai (Te Arawa)",
+        "ministry_code" : "0406"
+      },
+    "model" : "people.iwi",
+    "pk" : 37
+  },
+  { "fields" : { "description" : "Tuhourangi (Te Arawa)",
+        "ministry_code" : "0407"
+      },
+    "model" : "people.iwi",
+    "pk" : 38
+  },
+  { "fields" : { "description" : "Uenuku-Kopako (Te Arawa)",
+        "ministry_code" : "0408"
+      },
+    "model" : "people.iwi",
+    "pk" : 39
+  },
+  { "fields" : { "description" : "Waitaha (Te Arawa)",
+        "ministry_code" : "0409"
+      },
+    "model" : "people.iwi",
+    "pk" : 40
+  },
+  { "fields" : { "description" : "Ngati Whakaue (Te Arawa)",
+        "ministry_code" : "0410"
+      },
+    "model" : "people.iwi",
+    "pk" : 41
+  },
+  { "fields" : { "description" : "Ngati Tuwharetoa",
+        "ministry_code" : "0411"
+      },
+    "model" : "people.iwi",
+    "pk" : 42
+  },
+  { "fields" : { "description" : "Ngati Tahu (Te Arawa)",
+        "ministry_code" : "0412"
+      },
+    "model" : "people.iwi",
+    "pk" : 43
+  },
+  { "fields" : { "description" : "Te Arawa/Taupo (Rotorua/Taupo) Region, not further defined",
+        "ministry_code" : "0400"
+      },
+    "model" : "people.iwi",
+    "pk" : 44
+  },
+  { "fields" : { "description" : "Ngati Pukenga",
+        "ministry_code" : "0501"
+      },
+    "model" : "people.iwi",
+    "pk" : 45
+  },
+  { "fields" : { "description" : "Ngaiterangi",
+        "ministry_code" : "0502"
+      },
+    "model" : "people.iwi",
+    "pk" : 46
+  },
+  { "fields" : { "description" : "Ngati Ranginui",
+        "ministry_code" : "0503"
+      },
+    "model" : "people.iwi",
+    "pk" : 47
+  },
+  { "fields" : { "description" : "Ngati Awa",
+        "ministry_code" : "0504"
+      },
+    "model" : "people.iwi",
+    "pk" : 48
+  },
+  { "fields" : { "description" : "Ngati Manawa",
+        "ministry_code" : "0505"
+      },
+    "model" : "people.iwi",
+    "pk" : 49
+  },
+  { "fields" : { "description" : "Ngai Tai",
+        "ministry_code" : "0506"
+      },
+    "model" : "people.iwi",
+    "pk" : 50
+  },
+  { "fields" : { "description" : "Tuhoe",
+        "ministry_code" : "0507"
+      },
+    "model" : "people.iwi",
+    "pk" : 51
+  },
+  { "fields" : { "description" : "Whakatohea",
+        "ministry_code" : "0508"
+      },
+    "model" : "people.iwi",
+    "pk" : 52
+  },
+  { "fields" : { "description" : "Whanau-A-Apanui",
+        "ministry_code" : "0509"
+      },
+    "model" : "people.iwi",
+    "pk" : 53
+  },
+  { "fields" : { "description" : "Ngati Whare",
+        "ministry_code" : "0510"
+      },
+    "model" : "people.iwi",
+    "pk" : 54
+  },
+  { "fields" : { "description" : "Tauranga Moana/Matatua (Bay of Plenty) Region, not further defined",
+        "ministry_code" : "0500"
+      },
+    "model" : "people.iwi",
+    "pk" : 55
+  },
+  { "fields" : { "description" : "Ngati Porou",
+        "ministry_code" : "0601"
+      },
+    "model" : "people.iwi",
+    "pk" : 56
+  },
+  { "fields" : { "description" : "Te Aitanga-A-Mahaki",
+        "ministry_code" : "0602"
+      },
+    "model" : "people.iwi",
+    "pk" : 57
+  },
+  { "fields" : { "description" : "Rongowhakata",
+        "ministry_code" : "0603"
+      },
+    "model" : "people.iwi",
+    "pk" : 58
+  },
+  { "fields" : { "description" : "Ngai Tamanuhiri",
+        "ministry_code" : "0604"
+      },
+    "model" : "people.iwi",
+    "pk" : 59
+  },
+  { "fields" : { "description" : "Te Tairawhiti (East Coast) Region, not further defined",
+        "ministry_code" : "0600"
+      },
+    "model" : "people.iwi",
+    "pk" : 60
+  },
+  { "fields" : { "description" : "Rongomaiwahine (Te Mahia)",
+        "ministry_code" : "0701"
+      },
+    "model" : "people.iwi",
+    "pk" : 61
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Te Wairoa",
+        "ministry_code" : "0702"
+      },
+    "model" : "people.iwi",
+    "pk" : 62
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Heretaunga",
+        "ministry_code" : "0703"
+      },
+    "model" : "people.iwi",
+    "pk" : 63
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Wairarapa",
+        "ministry_code" : "0704"
+      },
+    "model" : "people.iwi",
+    "pk" : 64
+  },
+  { "fields" : { "description" : "Ngati Kahungunu, region unspecified",
+        "ministry_code" : "0705"
+      },
+    "model" : "people.iwi",
+    "pk" : 65
+  },
+  { "fields" : { "description" : "Rangitane (Te Matau a Maui/Hawkes Bay/Wairarapa)",
+        "ministry_code" : "0706"
+      },
+    "model" : "people.iwi",
+    "pk" : 66
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Whanganui a Orotu",
+        "ministry_code" : "0707"
+      },
+    "model" : "people.iwi",
+    "pk" : 67
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Tamatea",
+        "ministry_code" : "0708"
+      },
+    "model" : "people.iwi",
+    "pk" : 68
+  },
+  { "fields" : { "description" : "Ngati Kahungunu ki Tamakinui a Rua",
+        "ministry_code" : "0709"
+      },
+    "model" : "people.iwi",
+    "pk" : 69
+  },
+  { "fields" : { "description" : "Te Matau a Maui/Wairarapa (Hawkes Bay/Wairarapa) Region, not further defined",
+        "ministry_code" : "0700"
+      },
+    "model" : "people.iwi",
+    "pk" : 70
+  },
+  { "fields" : { "description" : "Te Atiawa (Taranaki)",
+        "ministry_code" : "0801"
+      },
+    "model" : "people.iwi",
+    "pk" : 71
+  },
+  { "fields" : { "description" : "Ngati Maru (Taranaki)",
+        "ministry_code" : "0802"
+      },
+    "model" : "people.iwi",
+    "pk" : 72
+  },
+  { "fields" : { "description" : "Ngati Mutunga (Taranaki)",
+        "ministry_code" : "0803"
+      },
+    "model" : "people.iwi",
+    "pk" : 73
+  },
+  { "fields" : { "description" : "Nga Rauru",
+        "ministry_code" : "0804"
+      },
+    "model" : "people.iwi",
+    "pk" : 74
+  },
+  { "fields" : { "description" : "Nga Ruahine",
+        "ministry_code" : "0805"
+      },
+    "model" : "people.iwi",
+    "pk" : 75
+  },
+  { "fields" : { "description" : "Ngati Ruanui",
+        "ministry_code" : "0806"
+      },
+    "model" : "people.iwi",
+    "pk" : 76
+  },
+  { "fields" : { "description" : "Ngati Tama (Taranaki)",
+        "ministry_code" : "0807"
+      },
+    "model" : "people.iwi",
+    "pk" : 77
+  },
+  { "fields" : { "description" : "Taranaki",
+        "ministry_code" : "0808"
+      },
+    "model" : "people.iwi",
+    "pk" : 78
+  },
+  { "fields" : { "description" : "Tangahoe",
+        "ministry_code" : "0809"
+      },
+    "model" : "people.iwi",
+    "pk" : 79
+  },
+  { "fields" : { "description" : "Pakakohi",
+        "ministry_code" : "0810"
+      },
+    "model" : "people.iwi",
+    "pk" : 80
+  },
+  { "fields" : { "description" : "Taranaki (Taranaki) Region, not further defined",
+        "ministry_code" : "0800"
+      },
+    "model" : "people.iwi",
+    "pk" : 81
+  },
+  { "fields" : { "description" : "Ngati Apa (Rangitikei)",
+        "ministry_code" : "0901"
+      },
+    "model" : "people.iwi",
+    "pk" : 82
+  },
+  { "fields" : { "description" : "Te Ati Hau Nui-A-Paparangi",
+        "ministry_code" : "0902"
+      },
+    "model" : "people.iwi",
+    "pk" : 83
+  },
+  { "fields" : { "description" : "Ngati Haua (Taumarunui)",
+        "ministry_code" : "0903"
+      },
+    "model" : "people.iwi",
+    "pk" : 84
+  },
+  { "fields" : { "description" : "Ngati Hauiti",
+        "ministry_code" : "0904"
+      },
+    "model" : "people.iwi",
+    "pk" : 85
+  },
+  { "fields" : { "description" : "Whanganui/Rangitikei (Wanganui/Rangitikei) Region, not further defined",
+        "ministry_code" : "0900"
+      },
+    "model" : "people.iwi",
+    "pk" : 86
+  },
+  { "fields" : { "description" : "Manawatu/Horowhenua/TeWhanganui a Tara (Manawatu/Horowhenua/Wellington) Region nfd",
+        "ministry_code" : "1000"
+      },
+    "model" : "people.iwi",
+    "pk" : 87
+  },
+  { "fields" : { "description" : "Te Atiawa (Te Whanganui a Tara/Wellington)",
+        "ministry_code" : "1001"
+      },
+    "model" : "people.iwi",
+    "pk" : 88
+  },
+  { "fields" : { "description" : "Muaupoko",
+        "ministry_code" : "1002"
+      },
+    "model" : "people.iwi",
+    "pk" : 89
+  },
+  { "fields" : { "description" : "Rangitane (Manawatu)",
+        "ministry_code" : "1003"
+      },
+    "model" : "people.iwi",
+    "pk" : 90
+  },
+  { "fields" : { "description" : "Ngati Raukawa (Horowhenua/Manawatu)",
+        "ministry_code" : "1004"
+      },
+    "model" : "people.iwi",
+    "pk" : 91
+  },
+  { "fields" : { "description" : "Ngati Toarangatira (Te Whanganui a Tara/Wellington)",
+        "ministry_code" : "1005"
+      },
+    "model" : "people.iwi",
+    "pk" : 92
+  },
+  { "fields" : { "description" : "Te Atiawa ki Whakarongotai",
+        "ministry_code" : "1006"
+      },
+    "model" : "people.iwi",
+    "pk" : 93
+  },
+  { "fields" : { "description" : "Te Atiawa (Te Waipounamu/South Island)",
+        "ministry_code" : "1101"
+      },
+    "model" : "people.iwi",
+    "pk" : 94
+  },
+  { "fields" : { "description" : "Ngati Koata",
+        "ministry_code" : "1102"
+      },
+    "model" : "people.iwi",
+    "pk" : 95
+  },
+  { "fields" : { "description" : "Ngati Kuia",
+        "ministry_code" : "1103"
+      },
+    "model" : "people.iwi",
+    "pk" : 96
+  },
+  { "fields" : { "description" : "Kati Mamoe",
+        "ministry_code" : "1104"
+      },
+    "model" : "people.iwi",
+    "pk" : 97
+  },
+  { "fields" : { "description" : "Moriori",
+        "ministry_code" : "1105"
+      },
+    "model" : "people.iwi",
+    "pk" : 98
+  },
+  { "fields" : { "description" : "Ngati Mutunga (Wharekauri/Chatham Islands)",
+        "ministry_code" : "1106"
+      },
+    "model" : "people.iwi",
+    "pk" : 99
+  },
+  { "fields" : { "description" : "Rangitane (Te Waipounamu/South Island)",
+        "ministry_code" : "1107"
+      },
+    "model" : "people.iwi",
+    "pk" : 100
+  },
+  { "fields" : { "description" : "Ngati Rarua",
+        "ministry_code" : "1108"
+      },
+    "model" : "people.iwi",
+    "pk" : 101
+  },
+  { "fields" : { "description" : "Ngai Tahu / Kai Tahu",
+        "ministry_code" : "1109"
+      },
+    "model" : "people.iwi",
+    "pk" : 102
+  },
+  { "fields" : { "description" : "Ngati Tama (Te Waipounamu/South Island)",
+        "ministry_code" : "1110"
+      },
+    "model" : "people.iwi",
+    "pk" : 103
+  },
+  { "fields" : { "description" : "Ngati Toarangatira (Te Waipounamu/South Island)",
+        "ministry_code" : "1111"
+      },
+    "model" : "people.iwi",
+    "pk" : 104
+  },
+  { "fields" : { "description" : "Waitaha (Te Waipounamu/South Island)",
+        "ministry_code" : "1112"
+      },
+    "model" : "people.iwi",
+    "pk" : 105
+  },
+  { "fields" : { "description" : "Ngati Apa ki te Waipounamu",
+        "ministry_code" : "1113"
+      },
+    "model" : "people.iwi",
+    "pk" : 106
+  },
+  { "fields" : { "description" : "Te Waipounamu/Wharekauri (South Island/Chatham Islands) Region, nfd",
+        "ministry_code" : "1100"
+      },
+    "model" : "people.iwi",
+    "pk" : 107
+  },
+  { "fields" : { "description" : "Tainui",
+        "ministry_code" : "2001"
+      },
+    "model" : "people.iwi",
+    "pk" : 108
+  },
+  { "fields" : { "description" : "Te Arawa",
+        "ministry_code" : "2002"
+      },
+    "model" : "people.iwi",
+    "pk" : 109
+  },
+  { "fields" : { "description" : "Takitimu",
+        "ministry_code" : "2003"
+      },
+    "model" : "people.iwi",
+    "pk" : 110
+  },
+  { "fields" : { "description" : "Aotea",
+        "ministry_code" : "2004"
+      },
+    "model" : "people.iwi",
+    "pk" : 111
+  },
+  { "fields" : { "description" : "Matatua",
+        "ministry_code" : "2005"
+      },
+    "model" : "people.iwi",
+    "pk" : 112
+  },
+  { "fields" : { "description" : "Mahuru",
+        "ministry_code" : "2006"
+      },
+    "model" : "people.iwi",
+    "pk" : 113
+  },
+  { "fields" : { "description" : "Mamari",
+        "ministry_code" : "2007"
+      },
+    "model" : "people.iwi",
+    "pk" : 114
+  },
+  { "fields" : { "description" : "Ngatokimatawhaorua",
+        "ministry_code" : "2008"
+      },
+    "model" : "people.iwi",
+    "pk" : 115
+  },
+  { "fields" : { "description" : "Nukutere",
+        "ministry_code" : "2009"
+      },
+    "model" : "people.iwi",
+    "pk" : 116
+  },
+  { "fields" : { "description" : "Tokomaru",
+        "ministry_code" : "2010"
+      },
+    "model" : "people.iwi",
+    "pk" : 117
+  },
+  { "fields" : { "description" : "Kurahaupo",
+        "ministry_code" : "2011"
+      },
+    "model" : "people.iwi",
+    "pk" : 118
+  },
+  { "fields" : { "description" : "Muriwhenua",
+        "ministry_code" : "2012"
+      },
+    "model" : "people.iwi",
+    "pk" : 119
+  },
+  { "fields" : { "description" : "Hauraki / Pare Hauraki",
+        "ministry_code" : "2013"
+      },
+    "model" : "people.iwi",
+    "pk" : 120
+  },
+  { "fields" : { "description" : "Turanganui a Kiwa",
+        "ministry_code" : "2014"
+      },
+    "model" : "people.iwi",
+    "pk" : 121
+  },
+  { "fields" : { "description" : "Te Tauihu o Te Waka a Maui",
+        "ministry_code" : "2015"
+      },
+    "model" : "people.iwi",
+    "pk" : 122
+  },
+  { "fields" : { "description" : "Tauranga Moana",
+        "ministry_code" : "2016"
+      },
+    "model" : "people.iwi",
+    "pk" : 123
+  },
+  { "fields" : { "description" : "Horouta",
+        "ministry_code" : "2017"
+      },
+    "model" : "people.iwi",
+    "pk" : 124
+  },
+  { "fields" : { "description" : "Te Atiawa, region unspecified",
+        "ministry_code" : "2101"
+      },
+    "model" : "people.iwi",
+    "pk" : 125
+  },
+  { "fields" : { "description" : "Ngati Haua, region unspecified",
+        "ministry_code" : "2102"
+      },
+    "model" : "people.iwi",
+    "pk" : 126
+  },
+  { "fields" : { "description" : "Ngati Maru, region unspecified",
+        "ministry_code" : "2103"
+      },
+    "model" : "people.iwi",
+    "pk" : 127
+  },
+  { "fields" : { "description" : "Ngati Mutunga, region unspecified",
+        "ministry_code" : "2104"
+      },
+    "model" : "people.iwi",
+    "pk" : 128
+  },
+  { "fields" : { "description" : "Rangitane, region unspecified",
+        "ministry_code" : "2105"
+      },
+    "model" : "people.iwi",
+    "pk" : 129
+  },
+  { "fields" : { "description" : "Ngati Raukawa, region unspecified",
+        "ministry_code" : "2106"
+      },
+    "model" : "people.iwi",
+    "pk" : 130
+  },
+  { "fields" : { "description" : "Ngati Tama, region unspecified",
+        "ministry_code" : "2107"
+      },
+    "model" : "people.iwi",
+    "pk" : 131
+  },
+  { "fields" : { "description" : "Ngati Toa, region unspecified",
+        "ministry_code" : "2108"
+      },
+    "model" : "people.iwi",
+    "pk" : 132
+  },
+  { "fields" : { "description" : "Waitaha, region unspecified",
+        "ministry_code" : "2109"
+      },
+    "model" : "people.iwi",
+    "pk" : 133
+  },
+  { "fields" : { "description" : "Ngati Apa, area unspecified",
+        "ministry_code" : "2110"
+      },
+    "model" : "people.iwi",
+    "pk" : 134
+  },
+  { "fields" : { "description" : "Ngai Tai, area unspecified",
+        "ministry_code" : "2111"
+      },
+    "model" : "people.iwi",
+    "pk" : 135
+  },
+  { "fields" : { "description" : "Hapu Affiliated to More Than One Iwi",
+        "ministry_code" : "2200"
+      },
+    "model" : "people.iwi",
+    "pk" : 136
+  },
+  { "fields" : { "description" : "Don't know",
+        "ministry_code" : "4444"
+      },
+    "model" : "people.iwi",
+    "pk" : 137
+  },
+  { "fields" : { "description" : "Refused to answer",
+        "ministry_code" : "5555"
+      },
+    "model" : "people.iwi",
+    "pk" : 138
+  },
+  { "fields" : { "description" : "Response unidentifiable",
+        "ministry_code" : "7777"
+      },
+    "model" : "people.iwi",
+    "pk" : 139
+  },
+  { "fields" : { "description" : "Response outside scope (i.e. not related to the question)",
+        "ministry_code" : "8888"
+      },
+    "model" : "people.iwi",
+    "pk" : 140
+  },
+  { "fields" : { "description" : "Not stated or no response",
+        "ministry_code" : "9999"
+      },
+    "model" : "people.iwi",
+    "pk" : 141
+  },
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 1,
+		"fields" : {
+			"description" : "Parent",
+			"reciprocal" : 2
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 2,
+		"fields" : {
+			"description" : "Child",
+			"reciprocal" : 1
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 3,
+		"fields" : {
+			"description" : "Spouse",
+			"reciprocal" : 3
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 4,
+		"fields" : {
+			"description" : "Sibling",
+			"reciprocal" : 4
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 5,
+		"fields" : {
+			"description" : "Grandparent",
+			"reciprocal" : 6
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" :6,
+		"fields" : {
+			"description" : "Grandchild",
+			"reciprocal" : 5
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 7,
+		"fields" : {
+			"description" : "Cousin",
+			"reciprocal" : 7
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 8,
+		"fields" : {
+			"description" : "Aunt/Uncle",
+			"reciprocal" : 9
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 9,
+		"fields" : {
+			"description" : "Niece/Nephew",
+			"reciprocal" : 8
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 10,
+		"fields" : {
+			"description" : "Legal Guardian",
+			"reciprocal" : 11
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 11,
+		"fields" : {
+			"description" : "Ward",
+			"reciprocal" : 10
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 12,
+		"fields" : {
+			"description" : "Friend",
+			"reciprocal" : 12
+		}
+	}
+]

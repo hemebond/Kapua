@@ -15,9 +15,40 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from kapua.people.models import Person, Residence, Relationship
 from django.contrib import admin
+from kapua.people.models import Person, Relationship, Residence
 
-admin.site.register(Person)
-admin.site.register(Residence)
-admin.site.register(Relationship)
+class RelationshipInline(admin.StackedInline):
+	model = Relationship
+	fk_name = 'person'
+	extra = 1
+	exclude = ['reciprocal']
+
+class PersonAdmin(admin.ModelAdmin):
+	fieldsets = [
+		(
+			'Name', {
+				'fields' : ['legal_first_name', 'middle_names', 'legal_last_name']
+			}
+		),
+		(
+			'Preferred Name', {
+				'fields' : ['preferred_first_name', 'preferred_last_name'],
+				'classes' : ['collapse']
+			}
+		),
+		(
+			None, {
+				'fields' : ['photo', 'birth_date', 'gender', 'email', 'phone', 'privacy_indicator', 'residence', 'citizenship', 'ethnicity', 'iwi']
+			}
+		)
+	]
+	inlines = [RelationshipInline]
+	filter_horizontal = ['ethnicity', 'iwi']
+
+class ResidenceAdmin(admin.ModelAdmin):
+	model = Residence
+
+admin.site.register(Person, PersonAdmin)
+#admin.site.register(Relationship)
+admin.site.register(Residence, ResidenceAdmin)

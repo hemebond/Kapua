@@ -15,12 +15,18 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls.defaults import *
+from django.db import models
+from django.forms import ModelForm, RadioSelect
+from kapua.forms import FormMixin
+from django.shortcuts import HttpResponseRedirect
+from kapua.people.models import Person, Address, Relationship
 
-urlpatterns = patterns('kapua.people.views',
-	(r'^$', 'index'),
-	(r'^add/$', 'add'),
-	(r'^(?P<person_id>\d+)/edit/$', 'edit'),
-	(r'^(?P<person_id>\d+)/$', 'detail'),
-)
+class PersonForm(ModelForm):
+	class Meta:
+		model = Person
+
+class PersonEditForm(FormMixin, ModelForm):
+	class Meta:
+		model = Person
+		fields = ('legal_last_name', 'legal_first_name', 'gender', 'birth_date', 'ethnicity', 'iwi', 'citizenship', 'privacy_indicator', 'middle_names', 'preferred_first_name', 'preferred_last_name', 'residence',)
 

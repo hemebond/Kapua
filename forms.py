@@ -15,12 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls.defaults import *
+from django.forms import Form, ModelForm
 
-urlpatterns = patterns('kapua.people.views',
-	(r'^$', 'index'),
-	(r'^add/$', 'add'),
-	(r'^(?P<person_id>\d+)/edit/$', 'edit'),
-	(r'^(?P<person_id>\d+)/$', 'detail'),
-)
+class FormMixin(object):
+	def as_div(self):
+		"Returns this form rendered as HTML <div>s."
+		return self._html_output(
+			normal_row = u'<div%(html_class_attr)s>%(errors)s%(label)s %(field)s%(help_text)s</div>',
+			error_row = u'<p>%s</p>',
+			row_ender = '</div>',
+			help_text_html = u' <span class="helptext">%s</span>',
+			errors_on_separate_row = False)
 
+	def __unicode__(self):
+		return self.as_div()
+
+	class Meta:
+		abstract = True

@@ -17,10 +17,11 @@
 
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('kapua.people.views',
+urlpatterns = patterns('kapua.address.views',
 	(r'^$', 'index'),
-	(r'^add/$', 'add'),
-	(r'^(?P<person_id>\d+)/edit/$', 'edit'),
-	(r'^(?P<person_id>\d+)/$', 'detail'),
+#	(r'^add/$', 'add'),
+	(r'^(?P<address_id>\d+)/edit/$', 'edit'),
+	(r'^(?P<address_id>\d+)/$', 'detail'),
+#	(r'^move/$', 'move'), # POST to here to move residents from one address to another
 )
 
