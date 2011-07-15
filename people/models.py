@@ -18,7 +18,20 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
-from kapua.address.models import Address, Country
+
+class Country(models.Model):
+	"""Model for countries"""
+	iso_code = models.CharField(max_length=2, primary_key=True)
+	ministry_code = models.CharField(max_length=3, blank=True, null=True)
+	name = models.CharField(max_length=45)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = _('Country')
+		verbose_name_plural = _('Countries')
+		ordering = ["name", "iso_code"]
 
 class Ethnicity(models.Model):
 	ministry_code = models.IntegerField(default=999, primary_key=True)
@@ -42,11 +55,26 @@ class Iwi(models.Model):
 		ordering = ['description']
 
 class Residence(models.Model):
-	address = models.ForeignKey(Address)
+	"""Model to store residence information"""
+	number = models.CharField(max_length=32, verbose_name=_('Unit and house number')) # [96] ADDRESS1
+	street = models.CharField(max_length=32, verbose_name=_('Street name')) # [96] ADDRESS1
+	suburb = models.CharField(max_length=32, verbose_name=_('Suburb or Rural Delivery number')) # [97] ADDRESS2
+	city = models.CharField(max_length=32, verbose_name=_('Town or city')) # [98] ADDRESS3
+	country = models.ForeignKey(Country, default='NZ')
+	postcode = models.IntegerField(max_length=4, blank=True, null=True) # [99] ADDRESS4
 	phone = models.CharField(max_length=32, blank=True, null=True)
-	
-	def __unicode__(self):
-		return str(self.address)
+
+	def __unicode__(self):			
+		return "%s, %s, %s, %s" % (self.city, self.suburb, self.street, str(self.number))
+
+	@models.permalink
+	def get_absolute_url(self):
+		return ('kapua.address.views.detail', [str(self.id)])
+
+	class Meta:
+		verbose_name_plural = _('Addresses')
+		unique_together = ('number', 'street', 'suburb', 'city', 'country')
+		ordering = ['country', 'city', 'suburb', 'street', 'number']
 
 class Person(models.Model):
 	GENDER_CHOICES = (
@@ -76,14 +104,14 @@ class Person(models.Model):
 
 	@property
 	def first_name(self):
-		return self.preferred_first_name or self.legal_first_name
+		return "%s" % (self.preferred_first_name or self.legal_first_name)
 	
 	@property
 	def last_name(self):
-		return u"%s" % (self.preferred_last_name or self.legal_last_name)
+		return "%s" % (self.preferred_last_name or self.legal_last_name)
 
 	def __unicode__(self):
-		return "%s %s" % (self.first_name, self.last_name)
+		return "%s, %s" % (self.last_name, self.first_name)
 	
 	@property
 	def age(self):

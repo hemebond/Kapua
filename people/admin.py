@@ -17,6 +17,7 @@
 
 from django.contrib import admin
 from kapua.people.models import Person, Relationship, Residence
+import inspect
 
 class RelationshipInline(admin.StackedInline):
 	model = Relationship
@@ -50,5 +51,4 @@ class ResidenceAdmin(admin.ModelAdmin):
 	model = Residence
 
 admin.site.register(Person, PersonAdmin)
-#admin.site.register(Relationship)
 admin.site.register(Residence, ResidenceAdmin)

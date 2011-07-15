@@ -1,4 +1,1372 @@
 [
+  { "fields" : { "name" : "Afghanistan",
+        "iso_code" : "AF",
+        "ministry_code" : "AFG"
+      },
+    "model" : "address.country",
+    "pk" : 1
+  },
+  { "fields" : { "name" : "Albania",
+        "iso_code" : "AL",
+        "ministry_code" : "ALB"
+      },
+    "model" : "address.country",
+    "pk" : 2
+  },
+  { "fields" : { "name" : "Algeria",
+        "iso_code" : "DZ",
+        "ministry_code" : "DZA"
+      },
+    "model" : "address.country",
+    "pk" : 3
+  },
+  { "fields" : { "name" : "Andorra",
+        "iso_code" : "AD",
+        "ministry_code" : "AND"
+      },
+    "model" : "address.country",
+    "pk" : 4
+  },
+  { "fields" : { "name" : "Angola",
+        "iso_code" : "AO",
+        "ministry_code" : "AGO"
+      },
+    "model" : "address.country",
+    "pk" : 5
+  },
+  { "fields" : { "name" : "Antigua and Barbuda",
+        "iso_code" : "AG",
+        "ministry_code" : "ATG"
+      },
+    "model" : "address.country",
+    "pk" : 6
+  },
+  { "fields" : { "name" : "Argentina",
+        "iso_code" : "AR",
+        "ministry_code" : "ARG"
+      },
+    "model" : "address.country",
+    "pk" : 7
+  },
+  { "fields" : { "name" : "Armenia",
+        "iso_code" : "AM",
+        "ministry_code" : "ARM"
+      },
+    "model" : "address.country",
+    "pk" : 8
+  },
+  { "fields" : { "name" : "Australia",
+        "iso_code" : "AU",
+        "ministry_code" : "AUS"
+      },
+    "model" : "address.country",
+    "pk" : 9
+  },
+  { "fields" : { "name" : "Austria",
+        "iso_code" : "AT",
+        "ministry_code" : "AUT"
+      },
+    "model" : "address.country",
+    "pk" : 10
+  },
+  { "fields" : { "name" : "Azerbaijan",
+        "iso_code" : "AZ",
+        "ministry_code" : "AZE"
+      },
+    "model" : "address.country",
+    "pk" : 11
+  },
+  { "fields" : { "name" : "Bahamas",
+        "iso_code" : "BS",
+        "ministry_code" : "BHS"
+      },
+    "model" : "address.country",
+    "pk" : 12
+  },
+  { "fields" : { "name" : "Bahrain",
+        "iso_code" : "BH",
+        "ministry_code" : "BHR"
+      },
+    "model" : "address.country",
+    "pk" : 13
+  },
+  { "fields" : { "name" : "Bangladesh",
+        "iso_code" : "BD",
+        "ministry_code" : "BGD"
+      },
+    "model" : "address.country",
+    "pk" : 14
+  },
+  { "fields" : { "name" : "Barbados",
+        "iso_code" : "BB",
+        "ministry_code" : "BRB"
+      },
+    "model" : "address.country",
+    "pk" : 15
+  },
+  { "fields" : { "name" : "Belarus",
+        "iso_code" : "BY",
+        "ministry_code" : "BLR"
+      },
+    "model" : "address.country",
+    "pk" : 16
+  },
+  { "fields" : { "name" : "Belgium",
+        "iso_code" : "BE",
+        "ministry_code" : "BEL"
+      },
+    "model" : "address.country",
+    "pk" : 17
+  },
+  { "fields" : { "name" : "Belize",
+        "iso_code" : "BZ",
+        "ministry_code" : "BLZ"
+      },
+    "model" : "address.country",
+    "pk" : 18
+  },
+  { "fields" : { "name" : "Benin",
+        "iso_code" : "BJ",
+        "ministry_code" : "BEN"
+      },
+    "model" : "address.country",
+    "pk" : 19
+  },
+  { "fields" : { "name" : "Bhutan",
+        "iso_code" : "BT",
+        "ministry_code" : "BTN"
+      },
+    "model" : "address.country",
+    "pk" : 20
+  },
+  { "fields" : { "name" : "Bolivia, Plurinational State of",
+        "iso_code" : "BO",
+        "ministry_code" : "BOL"
+      },
+    "model" : "address.country",
+    "pk" : 21
+  },
+  { "fields" : { "name" : "Bosnia and Herzegovina",
+        "iso_code" : "BA",
+        "ministry_code" : "BIH"
+      },
+    "model" : "address.country",
+    "pk" : 22
+  },
+  { "fields" : { "name" : "Botswana",
+        "iso_code" : "BW",
+        "ministry_code" : "BWA"
+      },
+    "model" : "address.country",
+    "pk" : 23
+  },
+  { "fields" : { "name" : "Brazil",
+        "iso_code" : "BR",
+        "ministry_code" : "BRA"
+      },
+    "model" : "address.country",
+    "pk" : 24
+  },
+  { "fields" : { "name" : "Brunei Darussalam",
+        "iso_code" : "BN",
+        "ministry_code" : "BRN"
+      },
+    "model" : "address.country",
+    "pk" : 25
+  },
+  { "fields" : { "name" : "Bulgaria",
+        "iso_code" : "BG",
+        "ministry_code" : "BGR"
+      },
+    "model" : "address.country",
+    "pk" : 26
+  },
+  { "fields" : { "name" : "Burkina Faso",
+        "iso_code" : "BF",
+        "ministry_code" : "BFA"
+      },
+    "model" : "address.country",
+    "pk" : 27
+  },
+  { "fields" : { "name" : "Burundi",
+        "iso_code" : "BI",
+        "ministry_code" : "BDI"
+      },
+    "model" : "address.country",
+    "pk" : 28
+  },
+  { "fields" : { "name" : "Cambodia",
+        "iso_code" : "KH",
+        "ministry_code" : "KHM"
+      },
+    "model" : "address.country",
+    "pk" : 29
+  },
+  { "fields" : { "name" : "Cameroon",
+        "iso_code" : "CM",
+        "ministry_code" : "CMR"
+      },
+    "model" : "address.country",
+    "pk" : 30
+  },
+  { "fields" : { "name" : "Canada",
+        "iso_code" : "CA",
+        "ministry_code" : "CAN"
+      },
+    "model" : "address.country",
+    "pk" : 31
+  },
+  { "fields" : { "name" : "Cape Verde",
+        "iso_code" : "CV",
+        "ministry_code" : "CPV"
+      },
+    "model" : "address.country",
+    "pk" : 32
+  },
+  { "fields" : { "name" : "Central African Republic",
+        "iso_code" : "CF",
+        "ministry_code" : "CAF"
+      },
+    "model" : "address.country",
+    "pk" : 33
+  },
+  { "fields" : { "name" : "Chad",
+        "iso_code" : "TD",
+        "ministry_code" : "TCD"
+      },
+    "model" : "address.country",
+    "pk" : 34
+  },
+  { "fields" : { "name" : "Chile",
+        "iso_code" : "CL",
+        "ministry_code" : "CHL"
+      },
+    "model" : "address.country",
+    "pk" : 35
+  },
+  { "fields" : { "name" : "China",
+        "iso_code" : "CN",
+        "ministry_code" : "CHN"
+      },
+    "model" : "address.country",
+    "pk" : 36
+  },
+  { "fields" : { "name" : "Colombia",
+        "iso_code" : "CO",
+        "ministry_code" : "COL"
+      },
+    "model" : "address.country",
+    "pk" : 37
+  },
+  { "fields" : { "name" : "Comoros",
+        "iso_code" : "KM",
+        "ministry_code" : "COM"
+      },
+    "model" : "address.country",
+    "pk" : 38
+  },
+  { "fields" : { "name" : "Congo",
+        "iso_code" : "CG",
+        "ministry_code" : "COG"
+      },
+    "model" : "address.country",
+    "pk" : 39
+  },
+  { "fields" : { "name" : "Congo, the Democratic Republic of the",
+        "iso_code" : "CD",
+        "ministry_code" : "COD"
+      },
+    "model" : "address.country",
+    "pk" : 40
+  },
+  { "fields" : { "name" : "Costa Rica",
+        "iso_code" : "CR",
+        "ministry_code" : "CRI"
+      },
+    "model" : "address.country",
+    "pk" : 41
+  },
+  { "fields" : { "name" : "Côte d'Ivoire",
+        "iso_code" : "CI",
+        "ministry_code" : "CIV"
+      },
+    "model" : "address.country",
+    "pk" : 42
+  },
+  { "fields" : { "name" : "Croatia",
+        "iso_code" : "HR",
+        "ministry_code" : "HRV"
+      },
+    "model" : "address.country",
+    "pk" : 43
+  },
+  { "fields" : { "name" : "Cuba",
+        "iso_code" : "CU",
+        "ministry_code" : "CUB"
+      },
+    "model" : "address.country",
+    "pk" : 44
+  },
+  { "fields" : { "name" : "Cyprus",
+        "iso_code" : "CY",
+        "ministry_code" : "CYP"
+      },
+    "model" : "address.country",
+    "pk" : 45
+  },
+  { "fields" : { "name" : "Czech Republic",
+        "iso_code" : "CZ",
+        "ministry_code" : "CZE"
+      },
+    "model" : "address.country",
+    "pk" : 46
+  },
+  { "fields" : { "name" : "Denmark",
+        "iso_code" : "DK",
+        "ministry_code" : "DNK"
+      },
+    "model" : "address.country",
+    "pk" : 47
+  },
+  { "fields" : { "name" : "Djibouti",
+        "iso_code" : "DJ",
+        "ministry_code" : "DJI"
+      },
+    "model" : "address.country",
+    "pk" : 48
+  },
+  { "fields" : { "name" : "Dominica",
+        "iso_code" : "DM",
+        "ministry_code" : "DMA"
+      },
+    "model" : "address.country",
+    "pk" : 49
+  },
+  { "fields" : { "name" : "Dominican Republic",
+        "iso_code" : "DO",
+        "ministry_code" : "DOM"
+      },
+    "model" : "address.country",
+    "pk" : 50
+  },
+  { "fields" : { "name" : "Ecuador",
+        "iso_code" : "EC",
+        "ministry_code" : "ECU"
+      },
+    "model" : "address.country",
+    "pk" : 51
+  },
+  { "fields" : { "name" : "Egypt",
+        "iso_code" : "EG",
+        "ministry_code" : "EGY"
+      },
+    "model" : "address.country",
+    "pk" : 52
+  },
+  { "fields" : { "name" : "El Salvador",
+        "iso_code" : "SV",
+        "ministry_code" : "SLV"
+      },
+    "model" : "address.country",
+    "pk" : 53
+  },
+  { "fields" : { "name" : "Equatorial Guinea",
+        "iso_code" : "GQ",
+        "ministry_code" : "GNQ"
+      },
+    "model" : "address.country",
+    "pk" : 54
+  },
+  { "fields" : { "name" : "Eritrea",
+        "iso_code" : "ER",
+        "ministry_code" : "ERI"
+      },
+    "model" : "address.country",
+    "pk" : 55
+  },
+  { "fields" : { "name" : "Estonia",
+        "iso_code" : "EE",
+        "ministry_code" : "EST"
+      },
+    "model" : "address.country",
+    "pk" : 56
+  },
+  { "fields" : { "name" : "Ethiopia",
+        "iso_code" : "ET",
+        "ministry_code" : "ETH"
+      },
+    "model" : "address.country",
+    "pk" : 57
+  },
+  { "fields" : { "name" : "Fiji",
+        "iso_code" : "FJ",
+        "ministry_code" : "FJI"
+      },
+    "model" : "address.country",
+    "pk" : 58
+  },
+  { "fields" : { "name" : "Finland",
+        "iso_code" : "FI",
+        "ministry_code" : "FIN"
+      },
+    "model" : "address.country",
+    "pk" : 59
+  },
+  { "fields" : { "name" : "France",
+        "iso_code" : "FR",
+        "ministry_code" : "FRA"
+      },
+    "model" : "address.country",
+    "pk" : 60
+  },
+  { "fields" : { "name" : "Gabon",
+        "iso_code" : "GA",
+        "ministry_code" : "GAB"
+      },
+    "model" : "address.country",
+    "pk" : 61
+  },
+  { "fields" : { "name" : "Gambia",
+        "iso_code" : "GM",
+        "ministry_code" : "GMB"
+      },
+    "model" : "address.country",
+    "pk" : 62
+  },
+  { "fields" : { "name" : "Georgia",
+        "iso_code" : "GE",
+        "ministry_code" : "GEO"
+      },
+    "model" : "address.country",
+    "pk" : 63
+  },
+  { "fields" : { "name" : "Germany",
+        "iso_code" : "DE",
+        "ministry_code" : "DEU"
+      },
+    "model" : "address.country",
+    "pk" : 64
+  },
+  { "fields" : { "name" : "Ghana",
+        "iso_code" : "GH",
+        "ministry_code" : "GHA"
+      },
+    "model" : "address.country",
+    "pk" : 65
+  },
+  { "fields" : { "name" : "Greece",
+        "iso_code" : "GR",
+        "ministry_code" : "GRC"
+      },
+    "model" : "address.country",
+    "pk" : 66
+  },
+  { "fields" : { "name" : "Grenada",
+        "iso_code" : "GD",
+        "ministry_code" : "GRD"
+      },
+    "model" : "address.country",
+    "pk" : 67
+  },
+  { "fields" : { "name" : "Guatemala",
+        "iso_code" : "GT",
+        "ministry_code" : "GTM"
+      },
+    "model" : "address.country",
+    "pk" : 68
+  },
+  { "fields" : { "name" : "Guinea",
+        "iso_code" : "GN",
+        "ministry_code" : "GIN"
+      },
+    "model" : "address.country",
+    "pk" : 69
+  },
+  { "fields" : { "name" : "Guinea-Bissau",
+        "iso_code" : "GW",
+        "ministry_code" : "GNB"
+      },
+    "model" : "address.country",
+    "pk" : 70
+  },
+  { "fields" : { "name" : "Guyana",
+        "iso_code" : "GY",
+        "ministry_code" : "GUY"
+      },
+    "model" : "address.country",
+    "pk" : 71
+  },
+  { "fields" : { "name" : "Haiti",
+        "iso_code" : "HT",
+        "ministry_code" : "HTI"
+      },
+    "model" : "address.country",
+    "pk" : 72
+  },
+  { "fields" : { "name" : "Holy See (Vatican City State)",
+        "iso_code" : "VA",
+        "ministry_code" : "VAT"
+      },
+    "model" : "address.country",
+    "pk" : 73
+  },
+  { "fields" : { "name" : "Honduras",
+        "iso_code" : "HN",
+        "ministry_code" : "HND"
+      },
+    "model" : "address.country",
+    "pk" : 74
+  },
+  { "fields" : { "name" : "Hungary",
+        "iso_code" : "HU",
+        "ministry_code" : "HUN"
+      },
+    "model" : "address.country",
+    "pk" : 75
+  },
+  { "fields" : { "name" : "Iceland",
+        "iso_code" : "IS",
+        "ministry_code" : "ISL"
+      },
+    "model" : "address.country",
+    "pk" : 76
+  },
+  { "fields" : { "name" : "India",
+        "iso_code" : "IN",
+        "ministry_code" : "IND"
+      },
+    "model" : "address.country",
+    "pk" : 77
+  },
+  { "fields" : { "name" : "Indonesia",
+        "iso_code" : "ID",
+        "ministry_code" : "IDN"
+      },
+    "model" : "address.country",
+    "pk" : 78
+  },
+  { "fields" : { "name" : "Iran, Islamic Republic of",
+        "iso_code" : "IR",
+        "ministry_code" : "IRN"
+      },
+    "model" : "address.country",
+    "pk" : 79
+  },
+  { "fields" : { "name" : "Iraq",
+        "iso_code" : "IQ",
+        "ministry_code" : "IRQ"
+      },
+    "model" : "address.country",
+    "pk" : 80
+  },
+  { "fields" : { "name" : "Ireland",
+        "iso_code" : "IE",
+        "ministry_code" : "IRL"
+      },
+    "model" : "address.country",
+    "pk" : 81
+  },
+  { "fields" : { "name" : "Israel",
+        "iso_code" : "IL",
+        "ministry_code" : "ISR"
+      },
+    "model" : "address.country",
+    "pk" : 82
+  },
+  { "fields" : { "name" : "Italy",
+        "iso_code" : "IT",
+        "ministry_code" : "ITA"
+      },
+    "model" : "address.country",
+    "pk" : 83
+  },
+  { "fields" : { "name" : "Jamaica",
+        "iso_code" : "JM",
+        "ministry_code" : "JAM"
+      },
+    "model" : "address.country",
+    "pk" : 84
+  },
+  { "fields" : { "name" : "Japan",
+        "iso_code" : "JP",
+        "ministry_code" : "JPN"
+      },
+    "model" : "address.country",
+    "pk" : 85
+  },
+  { "fields" : { "name" : "Jordan",
+        "iso_code" : "JO",
+        "ministry_code" : "JOR"
+      },
+    "model" : "address.country",
+    "pk" : 86
+  },
+  { "fields" : { "name" : "Kazakhstan",
+        "iso_code" : "KZ",
+        "ministry_code" : "KAZ"
+      },
+    "model" : "address.country",
+    "pk" : 87
+  },
+  { "fields" : { "name" : "Kenya",
+        "iso_code" : "KE",
+        "ministry_code" : "KEN"
+      },
+    "model" : "address.country",
+    "pk" : 88
+  },
+  { "fields" : { "name" : "Kiribati",
+        "iso_code" : "KI",
+        "ministry_code" : "KIR"
+      },
+    "model" : "address.country",
+    "pk" : 89
+  },
+  { "fields" : { "name" : "Korea, Republic of",
+        "iso_code" : "KR",
+        "ministry_code" : "KOR"
+      },
+    "model" : "address.country",
+    "pk" : 90
+  },
+  { "fields" : { "name" : "Kuwait",
+        "iso_code" : "KW",
+        "ministry_code" : "KWT"
+      },
+    "model" : "address.country",
+    "pk" : 91
+  },
+  { "fields" : { "name" : "Kyrgyzstan",
+        "iso_code" : "KG",
+        "ministry_code" : "KGZ"
+      },
+    "model" : "address.country",
+    "pk" : 92
+  },
+  { "fields" : { "name" : "Lao People's Democratic Republic",
+        "iso_code" : "LA",
+        "ministry_code" : "LAO"
+      },
+    "model" : "address.country",
+    "pk" : 93
+  },
+  { "fields" : { "name" : "Latvia",
+        "iso_code" : "LV",
+        "ministry_code" : "LVA"
+      },
+    "model" : "address.country",
+    "pk" : 94
+  },
+  { "fields" : { "name" : "Lebanon",
+        "iso_code" : "LB",
+        "ministry_code" : "LBN"
+      },
+    "model" : "address.country",
+    "pk" : 95
+  },
+  { "fields" : { "name" : "Lesotho",
+        "iso_code" : "LS",
+        "ministry_code" : "LSO"
+      },
+    "model" : "address.country",
+    "pk" : 96
+  },
+  { "fields" : { "name" : "Liberia",
+        "iso_code" : "LR",
+        "ministry_code" : "LBR"
+      },
+    "model" : "address.country",
+    "pk" : 97
+  },
+  { "fields" : { "name" : "Libyan Arab Jamahiriya",
+        "iso_code" : "LY",
+        "ministry_code" : "LBY"
+      },
+    "model" : "address.country",
+    "pk" : 98
+  },
+  { "fields" : { "name" : "Liechtenstein",
+        "iso_code" : "LI",
+        "ministry_code" : "LIE"
+      },
+    "model" : "address.country",
+    "pk" : 99
+  },
+  { "fields" : { "name" : "Lithuania",
+        "iso_code" : "LT",
+        "ministry_code" : "LTU"
+      },
+    "model" : "address.country",
+    "pk" : 100
+  },
+  { "fields" : { "name" : "Luxembourg",
+        "iso_code" : "LU",
+        "ministry_code" : "LUX"
+      },
+    "model" : "address.country",
+    "pk" : 101
+  },
+  { "fields" : { "name" : "Macedonia, The Former Yugoslav Republic of",
+        "iso_code" : "MK",
+        "ministry_code" : "MKD"
+      },
+    "model" : "address.country",
+    "pk" : 102
+  },
+  { "fields" : { "name" : "Madagascar",
+        "iso_code" : "MG",
+        "ministry_code" : "MDG"
+      },
+    "model" : "address.country",
+    "pk" : 103
+  },
+  { "fields" : { "name" : "Malawi",
+        "iso_code" : "MW",
+        "ministry_code" : "MWI"
+      },
+    "model" : "address.country",
+    "pk" : 104
+  },
+  { "fields" : { "name" : "Malaysia",
+        "iso_code" : "MY",
+        "ministry_code" : "MYS"
+      },
+    "model" : "address.country",
+    "pk" : 105
+  },
+  { "fields" : { "name" : "Maldives",
+        "iso_code" : "MV",
+        "ministry_code" : "MDV"
+      },
+    "model" : "address.country",
+    "pk" : 106
+  },
+  { "fields" : { "name" : "Mali",
+        "iso_code" : "ML",
+        "ministry_code" : "MLI"
+      },
+    "model" : "address.country",
+    "pk" : 107
+  },
+  { "fields" : { "name" : "Malta",
+        "iso_code" : "MT",
+        "ministry_code" : "MLT"
+      },
+    "model" : "address.country",
+    "pk" : 108
+  },
+  { "fields" : { "name" : "Marshall Islands",
+        "iso_code" : "MH",
+        "ministry_code" : "MHL"
+      },
+    "model" : "address.country",
+    "pk" : 109
+  },
+  { "fields" : { "name" : "Mauritania",
+        "iso_code" : "MR",
+        "ministry_code" : "MRT"
+      },
+    "model" : "address.country",
+    "pk" : 110
+  },
+  { "fields" : { "name" : "Mauritius",
+        "iso_code" : "MU",
+        "ministry_code" : "MUS"
+      },
+    "model" : "address.country",
+    "pk" : 111
+  },
+  { "fields" : { "name" : "Mexico",
+        "iso_code" : "MX",
+        "ministry_code" : "MEX"
+      },
+    "model" : "address.country",
+    "pk" : 112
+  },
+  { "fields" : { "name" : "Micronesia, Federated States of",
+        "iso_code" : "FM",
+        "ministry_code" : "FSM"
+      },
+    "model" : "address.country",
+    "pk" : 113
+  },
+  { "fields" : { "name" : "Moldova",
+        "iso_code" : "MD",
+        "ministry_code" : "MDA"
+      },
+    "model" : "address.country",
+    "pk" : 114
+  },
+  { "fields" : { "name" : "Monaco",
+        "iso_code" : "MC",
+        "ministry_code" : "MCO"
+      },
+    "model" : "address.country",
+    "pk" : 115
+  },
+  { "fields" : { "name" : "Mongolia",
+        "iso_code" : "MN",
+        "ministry_code" : "MNG"
+      },
+    "model" : "address.country",
+    "pk" : 116
+  },
+  { "fields" : { "name" : "Montenegro",
+        "iso_code" : "ME",
+        "ministry_code" : "MNE"
+      },
+    "model" : "address.country",
+    "pk" : 117
+  },
+  { "fields" : { "name" : "Morocco",
+        "iso_code" : "MA",
+        "ministry_code" : "MAR"
+      },
+    "model" : "address.country",
+    "pk" : 118
+  },
+  { "fields" : { "name" : "Mozambique",
+        "iso_code" : "MZ",
+        "ministry_code" : "MOZ"
+      },
+    "model" : "address.country",
+    "pk" : 119
+  },
+  { "fields" : { "name" : "Myanmar",
+        "iso_code" : "MM",
+        "ministry_code" : "MMR"
+      },
+    "model" : "address.country",
+    "pk" : 120
+  },
+  { "fields" : { "name" : "Namibia",
+        "iso_code" : "NA",
+        "ministry_code" : "NAM"
+      },
+    "model" : "address.country",
+    "pk" : 121
+  },
+  { "fields" : { "name" : "Nauru",
+        "iso_code" : "NR",
+        "ministry_code" : "NRU"
+      },
+    "model" : "address.country",
+    "pk" : 122
+  },
+  { "fields" : { "name" : "Nepal",
+        "iso_code" : "NP",
+        "ministry_code" : "NPL"
+      },
+    "model" : "address.country",
+    "pk" : 123
+  },
+  { "fields" : { "name" : "Netherlands",
+        "iso_code" : "NL",
+        "ministry_code" : "NLD"
+      },
+    "model" : "address.country",
+    "pk" : 124
+  },
+  { "fields" : { "name" : "New Zealand",
+        "iso_code" : "NZ",
+        "ministry_code" : "NZL"
+      },
+    "model" : "address.country",
+    "pk" : 125
+  },
+  { "fields" : { "name" : "Nicaragua",
+        "iso_code" : "NI",
+        "ministry_code" : "NIC"
+      },
+    "model" : "address.country",
+    "pk" : 126
+  },
+  { "fields" : { "name" : "Niger",
+        "iso_code" : "NE",
+        "ministry_code" : "NER"
+      },
+    "model" : "address.country",
+    "pk" : 127
+  },
+  { "fields" : { "name" : "Nigeria",
+        "iso_code" : "NG",
+        "ministry_code" : "NGA"
+      },
+    "model" : "address.country",
+    "pk" : 128
+  },
+  { "fields" : { "name" : "Norway",
+        "iso_code" : "NO",
+        "ministry_code" : "NOR"
+      },
+    "model" : "address.country",
+    "pk" : 129
+  },
+  { "fields" : { "name" : "Oman",
+        "iso_code" : "OM",
+        "ministry_code" : "OMN"
+      },
+    "model" : "address.country",
+    "pk" : 130
+  },
+  { "fields" : { "name" : "Pakistan",
+        "iso_code" : "PK",
+        "ministry_code" : "PAK"
+      },
+    "model" : "address.country",
+    "pk" : 131
+  },
+  { "fields" : { "name" : "Palau",
+        "iso_code" : "PW",
+        "ministry_code" : "PLW"
+      },
+    "model" : "address.country",
+    "pk" : 132
+  },
+  { "fields" : { "name" : "Palestinian Territory, Occupied",
+        "iso_code" : "PS",
+        "ministry_code" : "PSE"
+      },
+    "model" : "address.country",
+    "pk" : 133
+  },
+  { "fields" : { "name" : "Panama",
+        "iso_code" : "PA",
+        "ministry_code" : "PAN"
+      },
+    "model" : "address.country",
+    "pk" : 134
+  },
+  { "fields" : { "name" : "Papua New Guinea",
+        "iso_code" : "PG",
+        "ministry_code" : "PNG"
+      },
+    "model" : "address.country",
+    "pk" : 135
+  },
+  { "fields" : { "name" : "Paraguay",
+        "iso_code" : "PY",
+        "ministry_code" : "PRY"
+      },
+    "model" : "address.country",
+    "pk" : 136
+  },
+  { "fields" : { "name" : "Peru",
+        "iso_code" : "PE",
+        "ministry_code" : "PER"
+      },
+    "model" : "address.country",
+    "pk" : 137
+  },
+  { "fields" : { "name" : "Philippines",
+        "iso_code" : "PH",
+        "ministry_code" : "PHL"
+      },
+    "model" : "address.country",
+    "pk" : 138
+  },
+  { "fields" : { "name" : "Poland",
+        "iso_code" : "PL",
+        "ministry_code" : "POL"
+      },
+    "model" : "address.country",
+    "pk" : 139
+  },
+  { "fields" : { "name" : "Portugal",
+        "iso_code" : "PT",
+        "ministry_code" : "PRT"
+      },
+    "model" : "address.country",
+    "pk" : 140
+  },
+  { "fields" : { "name" : "Qatar",
+        "iso_code" : "QA",
+        "ministry_code" : "QAT"
+      },
+    "model" : "address.country",
+    "pk" : 141
+  },
+  { "fields" : { "name" : "Romania",
+        "iso_code" : "RO",
+        "ministry_code" : "ROU"
+      },
+    "model" : "address.country",
+    "pk" : 142
+  },
+  { "fields" : { "name" : "Russian Federation",
+        "iso_code" : "RU",
+        "ministry_code" : "RUS"
+      },
+    "model" : "address.country",
+    "pk" : 143
+  },
+  { "fields" : { "name" : "Rwanda",
+        "iso_code" : "RW",
+        "ministry_code" : "RWA"
+      },
+    "model" : "address.country",
+    "pk" : 144
+  },
+  { "fields" : { "name" : "Saint Kitts and Nevis",
+        "iso_code" : "KN",
+        "ministry_code" : "KNA"
+      },
+    "model" : "address.country",
+    "pk" : 145
+  },
+  { "fields" : { "name" : "Saint Lucia",
+        "iso_code" : "LC",
+        "ministry_code" : "LCA"
+      },
+    "model" : "address.country",
+    "pk" : 146
+  },
+  { "fields" : { "name" : "Saint Vincent and the Grenadines",
+        "iso_code" : "VC",
+        "ministry_code" : "VCT"
+      },
+    "model" : "address.country",
+    "pk" : 147
+  },
+  { "fields" : { "name" : "Samoa",
+        "iso_code" : "WS",
+        "ministry_code" : "WSM"
+      },
+    "model" : "address.country",
+    "pk" : 148
+  },
+  { "fields" : { "name" : "San Marino",
+        "iso_code" : "SM",
+        "ministry_code" : "SMR"
+      },
+    "model" : "address.country",
+    "pk" : 149
+  },
+  { "fields" : { "name" : "Sao Tome and Principe",
+        "iso_code" : "ST",
+        "ministry_code" : "STP"
+      },
+    "model" : "address.country",
+    "pk" : 150
+  },
+  { "fields" : { "name" : "Saudi Arabia",
+        "iso_code" : "SA",
+        "ministry_code" : "SAU"
+      },
+    "model" : "address.country",
+    "pk" : 151
+  },
+  { "fields" : { "name" : "Senegal",
+        "iso_code" : "SN",
+        "ministry_code" : "SEN"
+      },
+    "model" : "address.country",
+    "pk" : 152
+  },
+  { "fields" : { "name" : "Serbia",
+        "iso_code" : "RS",
+        "ministry_code" : "SRB"
+      },
+    "model" : "address.country",
+    "pk" : 153
+  },
+  { "fields" : { "name" : "Seychelles",
+        "iso_code" : "SC",
+        "ministry_code" : "SYC"
+      },
+    "model" : "address.country",
+    "pk" : 154
+  },
+  { "fields" : { "name" : "Sierra Leone",
+        "iso_code" : "SL",
+        "ministry_code" : "SLE"
+      },
+    "model" : "address.country",
+    "pk" : 155
+  },
+  { "fields" : { "name" : "Singapore",
+        "iso_code" : "SG",
+        "ministry_code" : "SGP"
+      },
+    "model" : "address.country",
+    "pk" : 156
+  },
+  { "fields" : { "name" : "Slovakia",
+        "iso_code" : "SK",
+        "ministry_code" : "SVK"
+      },
+    "model" : "address.country",
+    "pk" : 157
+  },
+  { "fields" : { "name" : "Slovenia",
+        "iso_code" : "SI",
+        "ministry_code" : "SVN"
+      },
+    "model" : "address.country",
+    "pk" : 158
+  },
+  { "fields" : { "name" : "Solomon Islands",
+        "iso_code" : "SB",
+        "ministry_code" : "SLB"
+      },
+    "model" : "address.country",
+    "pk" : 159
+  },
+  { "fields" : { "name" : "Somalia",
+        "iso_code" : "SO",
+        "ministry_code" : "SOM"
+      },
+    "model" : "address.country",
+    "pk" : 160
+  },
+  { "fields" : { "name" : "South Africa",
+        "iso_code" : "ZA",
+        "ministry_code" : "ZAF"
+      },
+    "model" : "address.country",
+    "pk" : 161
+  },
+  { "fields" : { "name" : "Spain",
+        "iso_code" : "ES",
+        "ministry_code" : "ESP"
+      },
+    "model" : "address.country",
+    "pk" : 162
+  },
+  { "fields" : { "name" : "Sri Lanka",
+        "iso_code" : "LK",
+        "ministry_code" : "LKA"
+      },
+    "model" : "address.country",
+    "pk" : 163
+  },
+  { "fields" : { "name" : "Sudan",
+        "iso_code" : "SD",
+        "ministry_code" : "SDN"
+      },
+    "model" : "address.country",
+    "pk" : 164
+  },
+  { "fields" : { "name" : "Suriname",
+        "iso_code" : "SR",
+        "ministry_code" : "SUR"
+      },
+    "model" : "address.country",
+    "pk" : 165
+  },
+  { "fields" : { "name" : "Swaziland",
+        "iso_code" : "SZ",
+        "ministry_code" : "SWZ"
+      },
+    "model" : "address.country",
+    "pk" : 166
+  },
+  { "fields" : { "name" : "Sweden",
+        "iso_code" : "SE",
+        "ministry_code" : "SWE"
+      },
+    "model" : "address.country",
+    "pk" : 167
+  },
+  { "fields" : { "name" : "Switzerland",
+        "iso_code" : "CH",
+        "ministry_code" : "CHE"
+      },
+    "model" : "address.country",
+    "pk" : 168
+  },
+  { "fields" : { "name" : "Syrian Arab Republic",
+        "iso_code" : "SY",
+        "ministry_code" : "SYR"
+      },
+    "model" : "address.country",
+    "pk" : 169
+  },
+  { "fields" : { "name" : "Taiwan, Province of China",
+        "iso_code" : "TW",
+        "ministry_code" : "TWN"
+      },
+    "model" : "address.country",
+    "pk" : 170
+  },
+  { "fields" : { "name" : "Tajikistan",
+        "iso_code" : "TJ",
+        "ministry_code" : "TJK"
+      },
+    "model" : "address.country",
+    "pk" : 171
+  },
+  { "fields" : { "name" : "Tanzania, United Republic of",
+        "iso_code" : "TZ",
+        "ministry_code" : "TZA"
+      },
+    "model" : "address.country",
+    "pk" : 172
+  },
+  { "fields" : { "name" : "Thailand",
+        "iso_code" : "TH",
+        "ministry_code" : "THA"
+      },
+    "model" : "address.country",
+    "pk" : 173
+  },
+  { "fields" : { "name" : "Timor-Leste",
+        "iso_code" : "TL",
+        "ministry_code" : "TLS"
+      },
+    "model" : "address.country",
+    "pk" : 174
+  },
+  { "fields" : { "name" : "Togo",
+        "iso_code" : "TG",
+        "ministry_code" : "TGO"
+      },
+    "model" : "address.country",
+    "pk" : 175
+  },
+  { "fields" : { "name" : "Tonga",
+        "iso_code" : "TO",
+        "ministry_code" : "TON"
+      },
+    "model" : "address.country",
+    "pk" : 176
+  },
+  { "fields" : { "name" : "Trinidad and Tobago",
+        "iso_code" : "TT",
+        "ministry_code" : "TTO"
+      },
+    "model" : "address.country",
+    "pk" : 177
+  },
+  { "fields" : { "name" : "Tunisia",
+        "iso_code" : "TN",
+        "ministry_code" : "TUN"
+      },
+    "model" : "address.country",
+    "pk" : 178
+  },
+  { "fields" : { "name" : "Turkey",
+        "iso_code" : "TR",
+        "ministry_code" : "TUR"
+      },
+    "model" : "address.country",
+    "pk" : 179
+  },
+  { "fields" : { "name" : "Turkmenistan",
+        "iso_code" : "TM",
+        "ministry_code" : "TKM"
+      },
+    "model" : "address.country",
+    "pk" : 180
+  },
+  { "fields" : { "name" : "Tuvalu",
+        "iso_code" : "TV",
+        "ministry_code" : "TUV"
+      },
+    "model" : "address.country",
+    "pk" : 181
+  },
+  { "fields" : { "name" : "Uganda",
+        "iso_code" : "UG",
+        "ministry_code" : "UGA"
+      },
+    "model" : "address.country",
+    "pk" : 182
+  },
+  { "fields" : { "name" : "Ukraine",
+        "iso_code" : "UA",
+        "ministry_code" : "UKR"
+      },
+    "model" : "address.country",
+    "pk" : 183
+  },
+  { "fields" : { "name" : "United Arab Emirates",
+        "iso_code" : "AE",
+        "ministry_code" : "ARE"
+      },
+    "model" : "address.country",
+    "pk" : 184
+  },
+  { "fields" : { "name" : "United Kingdom",
+        "iso_code" : "GB",
+        "ministry_code" : "GBR"
+      },
+    "model" : "address.country",
+    "pk" : 185
+  },
+  { "fields" : { "name" : "United States",
+        "iso_code" : "US",
+        "ministry_code" : "USA"
+      },
+    "model" : "address.country",
+    "pk" : 186
+  },
+  { "fields" : { "name" : "Uruguay",
+        "iso_code" : "UY",
+        "ministry_code" : "URY"
+      },
+    "model" : "address.country",
+    "pk" : 187
+  },
+  { "fields" : { "name" : "Uzbekistan",
+        "iso_code" : "UZ",
+        "ministry_code" : "UZB"
+      },
+    "model" : "address.country",
+    "pk" : 188
+  },
+  { "fields" : { "name" : "Vanuatu",
+        "iso_code" : "VU",
+        "ministry_code" : "VUT"
+      },
+    "model" : "address.country",
+    "pk" : 189
+  },
+  { "fields" : { "name" : "Venezuela, Bolivarian Republic of",
+        "iso_code" : "VE",
+        "ministry_code" : "VEN"
+      },
+    "model" : "address.country",
+    "pk" : 190
+  },
+  { "fields" : { "name" : "Viet Nam",
+        "iso_code" : "VN",
+        "ministry_code" : "VNM"
+      },
+    "model" : "address.country",
+    "pk" : 191
+  },
+  { "fields" : { "name" : "Western Sahara",
+        "iso_code" : "EH",
+        "ministry_code" : "ESH"
+      },
+    "model" : "address.country",
+    "pk" : 192
+  },
+  { "fields" : { "name" : "Yemen",
+        "iso_code" : "YE",
+        "ministry_code" : "YEM"
+      },
+    "model" : "address.country",
+    "pk" : 193
+  },
+  { "fields" : { "name" : "Zambia",
+        "iso_code" : "ZM",
+        "ministry_code" : "ZMB"
+      },
+    "model" : "address.country",
+    "pk" : 194
+  },
+  { "fields" : { "name" : "Zimbabwe",
+        "iso_code" : "ZW",
+        "ministry_code" : "ZWE"
+      },
+    "model" : "address.country",
+    "pk" : 195
+  },
+  
+  
+  
   { "fields" : { "description" : "NZ European/Pākehā",
         "ministry_code" : 111
       },
