@@ -18,5 +18,10 @@
 from kapua.students.models import Student, School
 from django.contrib import admin
 
-admin.site.register(Student)
-admin.site.register(School)
+class StudentAdmin(admin.ModelAdmin):
+	list_display = ('ministry_id', '__unicode__', 'year_level')
+	list_filter = ('year_level', 'person__gender')
+	search_fields = ['person__legal_first_name', 'person__legal_last_name', 'person__preferred_first_name', 'person__preferred_last_name']
+
+admin.site.register(Student, StudentAdmin)
+

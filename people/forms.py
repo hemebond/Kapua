@@ -19,7 +19,7 @@ from django.db import models
 from django.forms import ModelForm, RadioSelect
 from kapua.forms import FormMixin
 from django.shortcuts import HttpResponseRedirect
-from kapua.people.models import Person, Address, Relationship
+from kapua.people.models import Person, Relationship
 
 class PersonForm(ModelForm):
 	class Meta:

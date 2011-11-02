@@ -22,7 +22,7 @@ import inspect
 class RelationshipInline(admin.StackedInline):
 	model = Relationship
 	fk_name = 'person'
-	extra = 1
+	extra = 0
 	exclude = ['reciprocal']
 
 class PersonAdmin(admin.ModelAdmin):
@@ -46,9 +46,9 @@ class PersonAdmin(admin.ModelAdmin):
 	]
 	inlines = [RelationshipInline]
 	filter_horizontal = ['ethnicity', 'iwi']
-
-class ResidenceAdmin(admin.ModelAdmin):
-	model = Residence
+	#list_display = ('last_name', 'first_name')
+	ordering = ('last_name', 'first_name')
+	search_fields = ['^legal_first_name', '^legal_last_name', '^preferred_first_name', '^preferred_last_name']
 
 admin.site.register(Person, PersonAdmin)
-admin.site.register(Residence, ResidenceAdmin)
+admin.site.register(Residence)

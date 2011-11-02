@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+	{% if error_message %}<p class="error_message">{{ error_message }}</p>{% endif %}
+
+	<form action="." method="post">
+		{% csrf_token %}
+		{{ form.non_field.errors }}
+		<div>
+			{{ form.first_name.errors }}
+			<label for="id_first_name">{{ form.first_name.label }}</label>
+			{{ form.first_name }}
+		</div>
+		<div>
+			{{ form.middle_names.errors }}
+			<label for="id_middle_names">{{ form.middle_names.label }}</label>
+			{{ form.middle_names }}
+		<div>
+			{{ form.last_name.errors }}
+			<label for="id_last_name">{{ form.last_name.label }}</label>
+			{{ form.last_name }}
+		</div>
+		<div>
+			{{ form.gender.errors }}
+			<label for="id_gender">{{ form.gender.label }}</label>
+			{{ form.gender }}		
+		</div>
+
+		<input type="submit" value="{% trans 'Save and add another' %}" name="_addanother">
+		<input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue">
+		<input type="submit" value="{% trans 'Save' %}" class="default" name="_save">
+	</form>
+{% endblock %}
+

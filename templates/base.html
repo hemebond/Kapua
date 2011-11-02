@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<link rel="icon" href="{{ STATIC_URL }}icon.png">
+		<link rel="apple-touch-icon" href="{{ STATIC_URL }}icon.png">
+
+		<link rel="stylesheet" href="{{ STATIC_URL }}styles/default/base.css">
+
+		{% block head_extras %}{% endblock %}
+	</head>
+	<body>
+		<div id="main">
+			<div id="header">
+				{% include "mainmenu.html" %}
+				{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+					<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+
+			<div id="site_content">
+				<div id="sidebar">
+					{% block sidebar %}{% endblock %}
+				</div>
+				<div id="content">
+					{% block content %}{% endblock %}
+				</div>
+			</div>
+
+			<div id="footer">
+				{% block footer %}{% endblock %}
+				<a href="http://www.dcarter.co.uk">design by dcarter</a>
+			</div>
+		</div>
+	</body>
+</html>

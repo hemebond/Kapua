@@ -19,6 +19,5 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('kapua.students.views',
 	(r'^$', 'index'),
-	# (r'^students/(?P<student_id>\d+)/$', 'students.detail'),
-	# (r'^kapua/', include('kapua.students.urls')),
+	(r'^(?P<student_id>\d+)/$', 'detail'),
 )

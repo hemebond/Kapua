@@ -36,10 +36,10 @@ class Country(models.Model):
 class Ethnicity(models.Model):
 	ministry_code = models.IntegerField(default=999, primary_key=True)
 	description = models.CharField(max_length=64)
-	
+
 	def __unicode__(self):
 		return self.description
-	
+
 	class Meta:
 		ordering = ['description']
 
@@ -64,24 +64,28 @@ class Residence(models.Model):
 	postcode = models.IntegerField(max_length=4, blank=True, null=True) # [99] ADDRESS4
 	phone = models.CharField(max_length=32, blank=True, null=True)
 
-	def __unicode__(self):			
+	def __unicode__(self):
 		return "%s, %s, %s, %s" % (self.city, self.suburb, self.street, str(self.number))
 
-	@models.permalink
-	def get_absolute_url(self):
-		return ('kapua.address.views.detail', [str(self.id)])
+#	@models.permalink
+#	def get_absolute_url(self):
+#		return ('kapua.people.views.residence_detail', [str(self.id)])
 
 	class Meta:
-		verbose_name_plural = _('Addresses')
+		verbose_name_plural = _('Residences')
 		unique_together = ('number', 'street', 'suburb', 'city', 'country')
 		ordering = ['country', 'city', 'suburb', 'street', 'number']
+
+#class PersonManager(models.Manager):
+#	def get_query_set(self):
+#		return super(PersonManager, self).get_query_set().extra(select={'first_name': "CASE WHEN LENGTH(preferred_first_name) > 0 THEN preferred_first_name ELSE legal_first_name END", 'last_name': "CASE WHEN LENGTH(preferred_last_name) > 0 THEN preferred_last_name ELSE legal_last_name END"})
 
 class Person(models.Model):
 	GENDER_CHOICES = (
 		(1, _('male')),
 		(2, _('female')),
 	)
-	
+
 	legal_last_name = models.CharField(max_length=32, verbose_name=_('last_name')) # [4] Surname
 	legal_first_name = models.CharField(max_length=32, verbose_name=_('first_name')) # [5] First Name
 	gender = models.PositiveSmallIntegerField(_('gender'), choices=GENDER_CHOICES, default=1) # [6] Gender
@@ -93,26 +97,30 @@ class Person(models.Model):
 	middle_names = models.CharField(max_length=32, blank=True, null=True) # [106] MiddleName(S)
 	preferred_first_name = models.CharField(max_length=32, blank=True, null=True) # [107] Preferred First Name
 	preferred_last_name = models.CharField(max_length=32, blank=True, null=True) # [108] Preferred Surname
-	
+
 	residence = models.ForeignKey(Residence, blank=True, null=True)
 	phone = models.CharField(max_length=32, blank=True, null=True)
 	email = models.EmailField(blank=True, null=True)
-	
-	photo = models.ImageField(upload_to="people", blank=True, null=True)
-	
-	user = models.ForeignKey(User, verbose_name='SIS Account', blank=True, null=True)
 
-	@property
-	def first_name(self):
-		return "%s" % (self.preferred_first_name or self.legal_first_name)
-	
-	@property
-	def last_name(self):
-		return "%s" % (self.preferred_last_name or self.legal_last_name)
+	photo = models.ImageField(upload_to="people", blank=True, null=True)
+
+	user = models.OneToOneField(User, verbose_name='SIS Account', blank=True, null=True)
+
+	#objects = PersonManager()
+
+	first_name = models.CharField(max_length=32, blank=True, null=True)
+#	@property
+#	def first_name(self):
+#		return "%s" % (self.preferred_first_name or self.legal_first_name)
+
+	last_name = models.CharField(max_length=32, blank=True, null=True)
+#	@property
+#	def last_name(self):
+#		return "%s" % (self.preferred_last_name or self.legal_last_name)
 
 	def __unicode__(self):
-		return "%s, %s" % (self.last_name, self.first_name)
-	
+		return "%s, %s %s" % (self.last_name, self.first_name, self.middle_names)
+
 	@property
 	def age(self):
 		TODAY = datetime.date.today()
@@ -121,10 +129,15 @@ class Person(models.Model):
 	@models.permalink
 	def get_absolute_url(self):
 		return ('kapua.people.views.detail', [str(self.id)])
-	
+
 	class Meta:
 		verbose_name = _('Person')
 		verbose_name_plural = _('People')
+
+	def save(self, *args, **kwargs):
+		self.first_name = (self.preferred_first_name or self.legal_first_name)
+		self.last_name = (self.preferred_last_name or self.legal_last_name)
+		super(Person, self).save(*args, **kwargs)
 
 class RelationshipType(models.Model):
 	description = models.CharField(max_length=32)
@@ -147,8 +160,6 @@ class Relationship(models.Model):
 
 	def save(self, is_reciprocal=False, *args, **kwargs):
 		if not is_reciprocal:
-			l = dir(self)
-			print l
 			if not self.reciprocal == None:
 				self.reciprocal.relationship_type = self.relationship_type.reciprocal
 				self.reciprocal.save(is_reciprocal=True)
@@ -158,4 +169,3 @@ class Relationship(models.Model):
 				r.save(is_reciprocal=True)
 				self.reciprocal = r
 		super(Relationship, self).save(*args, **kwargs)
-

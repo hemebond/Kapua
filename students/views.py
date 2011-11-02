@@ -15,10 +15,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
+from django.conf import settings
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext
 from kapua.students.models import Student
-from django.http import HttpResponse
+
+#if "django.contrib.comments" in settings.INSTALLED_APPS:
+#	print "Comments are enabled"
 
 def index(request):
 	student_list = Student.objects.all()
-	output = ', '.join([s.__unicode__() for s in student_list])
-	return HttpResponse(output)
+	return render_to_response('students/index.html', {
+			'student_list': student_list
+		},
+		context_instance=RequestContext(request)
+	)
+
+def detail(request, student_id):
+	s = get_object_or_404(Student, pk=student_id)
+	return render_to_response('students/detail.html', {
+			'student':s,
+		},
+		context_instance=RequestContext(request)
+	)

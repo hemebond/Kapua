@@ -1,0 +1,17 @@
+<div id="menubar">
+	<ul id="menu">
+		<li><a href="/admin/"><img src="{{ STATIC_URL }}styles/default/images/admin.svg">Admin</a></li>
+		<li><a href="/courses/"><img src="{{ STATIC_URL }}styles/default/images/courses.svg">Courses</a></li>
+		<li><a href="/people/"><img src="{{ STATIC_URL }}styles/default/images/people.svg">People</a></li>
+	</ul>
+
+	<div id="user">
+	{% if user.is_authenticated %}
+		{% if user.person %}
+			Welcome, <a href="{{ user.person.get_absolute_url }}">{{ user.person.first_name }} {{ user.person.last_name }}</a>
+		{% endif %}
+	{% else %}
+		<p>Welcome, new user. Please log in.</p>
+	{% endif %}
+	</div>
+</div>
