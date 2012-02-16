@@ -1,0 +1,9 @@
+{% extends "admin/change_form.html" %}
+
+{% load courses_tags %}
+
+{% block after_field_sets %}
+	{% if object_id %}
+		{% display_moveable_page_list object_id %}
+	{% endif %}
+{% endblock %}

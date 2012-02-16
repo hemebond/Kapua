@@ -1,0 +1,106 @@
+{% load i18n mptt_tags static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<fieldset class="module">
+	<h2>Pages</h2>
+	<ol id="list_{{ root_node.id }}" class="sortable">
+		{% recursetree root_node.get_descendants %}
+		<li id="list_{{ node.id }}">
+			<div>
+				{{ node.content_object.name }}
+	            {% if perms.courses.add_page %}
+	                <a href="{% url admin:courses_page_change node.object_id %}" class="changelink">{% trans 'Change' %}</a>
+	            {% endif %}
+			</div>
+			{% if not node.is_leaf_node %}
+				<ol>
+					{{ children }}
+				</ol>
+			{% endif %}
+		</li>
+		{% endrecursetree %}
+	</ol>
+	<div class="add-row">
+		<a href="{% url admin:courses_page_add %}?course={{ course.pk }}">
+			<img alt="" src="{{ STATIC_PREFIX }}admin/img/admin/icon_addlink.gif">
+			Add a new page
+		</a>
+	</div>
+</fieldset>
+
+<script>
+	var item;
+	$(document).ajaxSend(function(event, xhr, settings) {
+	    function sameOrigin(url) {
+	        // url could be relative or scheme relative or absolute
+	        var host = document.location.host; // host + port
+	        var protocol = document.location.protocol;
+	        var sr_origin = '//' + host;
+	        var origin = protocol + sr_origin;
+	        // Allow absolute or scheme relative URLs to same origin
+	        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+	            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+	            // or any other URL that isn't scheme relative or absolute i.e relative.
+	            !(/^(\/\/|http:|https:).*/.test(url));
+	    }
+	    function safeMethod(method) {
+	        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+	    }
+	
+	    if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+	        xhr.setRequestHeader("X-CSRFToken", $.cookie("csrftoken"));
+	    }
+	});
+	
+	$(document).ready(function(){
+		$('ol.sortable').nestedSortable({
+			disableNesting: 'no-nest',
+			forcePlaceholderSize: true,
+			handle: 'div',
+			helper:	'clone',
+			items: 'li',
+			maxLevels: 3,
+			opacity: .6,
+			placeholder: 'placeholder',
+			revert: 250,
+			tabSize: 25,
+			tolerance: 'pointer',
+			toleranceElement: '> div',
+			update: function(event, ui) {
+				var item = ui.item;
+				
+				var re = /list_(\d+)/;
+				var item_id = re.exec(item.attr("id"))[1];
+				
+				var csrf_token = $.cookie("csrftoken");
+				
+				var root = item.parents("ol.sortable[id*=list]").eq(0);
+				var parent = item.parents("li").eq(0);
+				var prev = item.prev("li").eq(0);
+				
+				var target_id;
+				var position;
+				
+				if (prev.length > 0) {
+					target_id = re.exec(prev.attr("id"))[1];
+					position = "right";
+				}
+				else if (parent.length > 0) {
+					target_id = re.exec(parent.attr("id"))[1];
+					position = "first-child";
+				}
+				else {
+					target_id = re.exec(root.attr("id"))[1];
+					position = "first-child";
+				}
+
+				$.post("{% url admin:kapua_treenode_changelist %}" + item_id + "/move/",
+					{
+						"target_id": target_id,
+						"position": position
+					}
+				);
+			}
+		});
+	});
+</script>

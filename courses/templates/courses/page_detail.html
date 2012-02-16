@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load mptt_tags %}
+{% load i18n %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block sidebar %}
+	<h6>Tools</h6>
+	{% if perms.courses.change_page %}
+		<ul>
+			<li><a href="./edit/">Edit page</a></li>
+		</ul>
+	{% endif %}
+
+	{% if prev %}
+		<h6>Previous</h6>
+		<p><a href="{{ prev.content_object.get_absolute_url }}">{{ prev.content_object.name }}</a></p>
+	{% endif %}
+	
+	{% if next %}
+		<h6>Next</h6>
+		<p><a href="{{ next.content_object.get_absolute_url }}">{{ next.content_object.name }}</a></p>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+	<ol id="breadcrumbs">
+		{% for node in object.get_ancestors %}
+		<li><a href="{{ node.content_object.get_absolute_url }}">{{ node.content_object.name }}</a> »</li>
+		{% endfor %}
+	</ol>
+	
+	<h1>{{ object.content_object.name }}</h1>
+
+	{{ object.content_object.content|safe }}
+{% comment %}	
+	{% if next %}
+		<a href="{{ next.get_absolute_url }}">{{ next.name }}</a>
+	{% endif %}
+{% endcomment %}
+{% endblock %}

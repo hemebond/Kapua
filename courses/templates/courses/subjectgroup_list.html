@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "courses" %}{% endblock %}
+
+{% block header %}
+	{% include "mainmenu.html" %}
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for group in object_list %}
+            <li><a href="{{ group.slug }}/">{{ group.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

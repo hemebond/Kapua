@@ -40,7 +40,7 @@ class PersonAdmin(admin.ModelAdmin):
 		),
 		(
 			None, {
-				'fields' : ['photo', 'birth_date', 'gender', 'email', 'phone', 'privacy_indicator', 'residence', 'citizenship', 'ethnicity', 'iwi']
+				'fields' : ['user', 'photo', 'birth_date', 'gender', 'email', 'phone', 'privacy_indicator', 'residence', 'citizenship', 'ethnicity', 'iwi']
 			}
 		)
 	]

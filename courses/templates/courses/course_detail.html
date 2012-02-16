@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load mptt_tags %}
+{% load i18n %}
+
+{% block title %}{{ object.content_object.name }}{% endblock %}
+
+{% block head_extras %}
+<style>
+ol.table_of_contents,
+ol.table_of_contents ol { counter-reset: item }
+ol.table_of_contents li { display: block }
+ol.table_of_contents li:before { content: counters(item, ".") " "; counter-increment: item }
+</style>
+{% endblock %}
+
+{% block sidebar %}
+	{% if perms.courses.add_page %}
+		<ul>
+			<li><a href="./add/">Add new page</a></li>
+		</ul>
+	{% endif %}
+
+	{% if prev %}
+		<h6>Previous</h6>
+		<p><a href="{{ prev.content_object.get_absolute_url }}">{{ prev.content_object.name }}</a></p>
+	{% endif %}
+	
+	{% if next %}
+		<h6>Next</h6>
+		<p><a href="{{ next.content_object.get_absolute_url }}">{{ next.content_object.name }}</a></p>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+	<h1>{{ object.content_object.name }}</h1>
+
+	{{ object.content_object.content|safe }}
+	
+	<h2>Contents</h2>
+
+	<ol class="table_of_contents">
+		{% recursetree object.get_descendants %}
+		<li>
+			<a href="{{ node.content_object.get_absolute_url }}">{{ node.content_object.name }}</a>
+			{% if not node.is_leaf_node %}
+				<ol>
+					{{ children }}
+				</ol>
+			{% endif %}
+		</li>
+		{% endrecursetree %}
+	</ol>
+{% endblock %}

@@ -1,0 +1,1341 @@
+[
+	{
+		"fields" : {
+			"name" : "Language and Languages",
+			"slug" : "language-and-languages"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 1
+	},
+	{
+		"fields" : {
+			"name" : "Mathematics",
+			"slug" : "mathematics"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 2
+	},
+	{
+		"fields" : {
+			"name" : "Science",
+			"slug" : "science"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 3
+	},
+	{
+		"fields" : {
+			"name" : "Technology",
+			"slug" : "technology"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 4
+	},
+	{
+		"fields" : {
+			"name" : "The Arts",
+			"slug" : "the-arts"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 5
+	},
+	{
+		"fields" : {
+			"name" : "Social Sciences",
+			"slug" : "social-sciences"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 6
+	},
+	{
+		"fields" : {
+			"name" : "Health and Physical Education",
+			"slug" : "health-and-physical-education"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 7
+	},
+	{
+		"fields" : {
+			"name" : "Other",
+			"slug" : "other"
+		},
+		"model" : "courses.subjectgroup",
+		"pk" : 8
+	},
+
+
+
+	{
+		"fields" : {
+			"ministry_code" : "CHIN",
+			"name" : "Chinese",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 1
+	},
+	{
+		"fields" : {
+			"ministry_code" : "COMM",
+			"name" : "Communication skills",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 2
+	},
+	{
+		"fields" : {
+			"ministry_code" : "COOK",
+			"name" : "Cook Island Maori",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 3
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ENGL",
+			"name" : "English",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 4
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ENSL",
+			"name" : "English as a second language",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 5
+	},
+	{
+		"fields" : {
+			"ministry_code" : "REME",
+			"name" : "English (Remedial)",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 6
+	},
+	{
+		"fields" : {
+			"ministry_code" : "FREN",
+			"name" : "French",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 7
+	},
+	{
+		"fields" : {
+			"ministry_code" : "GERM",
+			"name" : "German",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 8
+	},
+	{
+		"fields" : {
+			"ministry_code" : "INDO",
+			"name" : "Indonesian",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 9
+	},
+	{
+		"fields" : {
+			"ministry_code" : "JAPA",
+			"name" : "Japanese",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 10
+	},
+	{
+		"fields" : {
+			"ministry_code" : "KORE",
+			"name" : "Korean",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 11
+	},
+	{
+		"fields" : {
+			"ministry_code" : "LATI",
+			"name" : "Latin",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 12
+	},
+	{
+		"fields" : {
+			"ministry_code" : "NIUE",
+			"name" : "Niuean",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 13
+	},
+	{
+		"fields" : {
+			"ministry_code" : "OLAN",
+			"name" : "Other languages",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 14
+	},
+	{
+		"fields" : {
+			"ministry_code" : "PLAN",
+			"name" : "Pacific Language studies",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 15
+	},
+	{
+		"fields" : {
+			"ministry_code" : "RUSS",
+			"name" : "Russian",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 16
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SAMO",
+			"name" : "Samoan",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 17
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SPAN",
+			"name" : "Spanish",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 18
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MAOR",
+			"name" : "Te Reo Maori",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 19
+	},
+	{
+		"fields" : {
+			"ministry_code" : "RANG",
+			"name" : "Te Reo Rangatira",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 20
+	},
+	{
+		"fields" : {
+			"ministry_code" : "TOKE",
+			"name" : "Tokelauan",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 21
+	},
+	{
+		"fields" : {
+			"ministry_code" : "TONG",
+			"name" : "Tongan",
+			"slug" : "",
+			"group" : 1
+		},
+		"model" : "courses.subject",
+		"pk" : 22
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MATH",
+			"name" : "Mathematics",
+			"slug" : "",
+			"group" : 2
+		},
+		"model" : "courses.subject",
+		"pk" : 23
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MATS",
+			"name" : "Mathematics with Calculus MATC Mathematics with Statistics",
+			"slug" : "",
+			"group" : 2
+		},
+		"model" : "courses.subject",
+		"pk" : 24
+	},
+	{
+		"fields" : {
+			"ministry_code" : "REMM",
+			"name" : "Mathematics (Remedial)",
+			"slug" : "",
+			"group" : 2
+		},
+		"model" : "courses.subject",
+		"pk" : 25
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ACCO",
+			"name" : "Accounting",
+			"slug" : "",
+			"group" : 2
+		},
+		"model" : "courses.subject",
+		"pk" : 26
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SCIE",
+			"name" : "Science",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 27
+	},
+	{
+		"fields" : {
+			"ministry_code" : "AGHO",
+			"name" : "Agriculture/Horticulture",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 28
+	},
+	{
+		"fields" : {
+			"ministry_code" : "BIOL",
+			"name" : "Biology/Biological Science",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 29
+	},
+	{
+		"fields" : {
+			"ministry_code" : "CHEM",
+			"name" : "Chemistry",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 30
+	},
+	{
+		"fields" : {
+			"ministry_code" : "EAAS",
+			"name" : "Earth Science/Astronomy",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 31
+	},
+	{
+		"fields" : {
+			"ministry_code" : "HUMB",
+			"name" : "Human Biology",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 32
+	},
+	{
+		"fields" : {
+			"ministry_code" : "PHYS",
+			"name" : "Physics",
+			"slug" : "",
+			"group" : 3
+		},
+		"model" : "courses.subject",
+		"pk" : 33
+	},
+	{
+		"fields" : {
+			"ministry_code" : "TECN",
+			"name" : "Technology",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 34
+	},
+	{
+		"fields" : {
+			"ministry_code" : "BITE",
+			"name" : "Biotechnology",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 35
+	},
+	{
+		"fields" : {
+			"ministry_code" : "COSC",
+			"name" : "Computer science/programming",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 36
+	},
+	{
+		"fields" : {
+			"ministry_code" : "COMP",
+			"name" : "Computer studies",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 37
+	},
+	{
+		"fields" : {
+			"ministry_code" : "DEST",
+			"name" : "Design, Drawing and Graphics",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 38
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ELTE",
+			"name" : "Electronics and Control",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 39
+	},
+	{
+		"fields" : {
+			"ministry_code" : "FOTE",
+			"name" : "Food Technology",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 40
+	},
+	{
+		"fields" : {
+			"ministry_code" : "GRAP",
+			"name" : "Graphics",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 41
+	},
+	{
+		"fields" : {
+			"ministry_code" : "INTE",
+			"name" : "Info. & Communication Tech",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 42
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MTEC",
+			"name" : "Materials Technology",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 43
+	},
+	{
+		"fields" : {
+			"ministry_code" : "STME",
+			"name" : "Structures and Mechanisms",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 44
+	},
+	{
+		"fields" : {
+			"ministry_code" : "TIMA",
+			"name" : "Text & Information Management",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 45
+	},
+	{
+		"fields" : {
+			"ministry_code" : "CLTX",
+			"name" : "Textiles/Clothing",
+			"slug" : "",
+			"group" : 4
+		},
+		"model" : "courses.subject",
+		"pk" : 46
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTA",
+			"name" : "The Arts",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 47
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTD",
+			"name" : "Art Design",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 48
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTH",
+			"name" : "Art History",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 49
+	},
+	{
+		"fields" : {
+			"ministry_code" : "DANC",
+			"name" : "Dance",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 50
+	},
+	{
+		"fields" : {
+			"ministry_code" : "DRAM",
+			"name" : "Drama",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 51
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MUSC",
+			"name" : "Music/Music Studies",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 52
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MUSP",
+			"name" : "Music Practical/Performance",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 53
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARPA",
+			"name" : "Painting",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 54
+	},
+	{
+		"fields" : {
+			"ministry_code" : "APER",
+			"name" : "Performing Arts",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 55
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTP",
+			"name" : "Photography",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 56
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARPR",
+			"name" : "Printmaking",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 57
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTS",
+			"name" : "Sculpture",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 58
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ARTC",
+			"name" : "Visual Arts",
+			"slug" : "",
+			"group" : 5
+		},
+		"model" : "courses.subject",
+		"pk" : 59
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SOST",
+			"name" : "Social Studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 60
+	},
+	{
+		"fields" : {
+			"ministry_code" : "CLST",
+			"name" : "Classics/Classical Studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 61
+	},
+	{
+		"fields" : {
+			"ministry_code" : "CMTY",
+			"name" : "Community Studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 62
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ECON",
+			"name" : "Economics",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 63
+	},
+	{
+		"fields" : {
+			"ministry_code" : "GEOG",
+			"name" : "Geography",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 64
+	},
+	{
+		"fields" : {
+			"ministry_code" : "HIST",
+			"name" : "History",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 65
+	},
+	{
+		"fields" : {
+			"ministry_code" : "LACU",
+			"name" : "Language & cultural studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 66
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MAOS",
+			"name" : "Maori Studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 67
+	},
+	{
+		"fields" : {
+			"ministry_code" : "MEST",
+			"name" : "Media Studies",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 68
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SOSC",
+			"name" : "Other Social Sciences",
+			"slug" : "",
+			"group" : 6
+		},
+		"model" : "courses.subject",
+		"pk" : 69
+	},
+	{
+		"fields" : {
+			"ministry_code" : "HEPH",
+			"name" : "Health and Physical Education",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 70
+	},
+	{
+		"fields" : {
+			"ministry_code" : "HEED",
+			"name" : "Health",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 71
+	},
+	{
+		"fields" : {
+			"ministry_code" : "HOME",
+			"name" : "Home Economics",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 72
+	},
+	{
+		"fields" : {
+			"ministry_code" : "OUED",
+			"name" : "Outdoor Education",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 73
+	},
+	{
+		"fields" : {
+			"ministry_code" : "PHED",
+			"name" : "Physical Education",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 74
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SPOR",
+			"name" : "Sports Studies",
+			"slug" : "",
+			"group" : 7
+		},
+		"model" : "courses.subject",
+		"pk" : 75
+	},
+	{
+		"fields" : {
+			"ministry_code" : "BUSS",
+			"name" : "Commerce related",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 76
+	},
+	{
+		"fields" : {
+			"ministry_code" : "FARM",
+			"name" : "Farming",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 77
+	},
+	{
+		"fields" : {
+			"ministry_code" : "FISH",
+			"name" : "Fishing",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 78
+	},
+	{
+		"fields" : {
+			"ministry_code" : "FOTY",
+			"name" : "Forestry",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 79
+	},
+	{
+		"fields" : {
+			"ministry_code" : "INTR",
+			"name" : "Industrial Trades",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 80
+	},
+	{
+		"fields" : {
+			"ministry_code" : "LAWS",
+			"name" : "Legal/Law related studies",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 81
+	},
+	{
+		"fields" : {
+			"ministry_code" : "LIFE",
+			"name" : "Life skills/Personal development",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 82
+	},
+	{
+		"fields" : {
+			"ministry_code" : "REST",
+			"name" : "Religious education/studies",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 83
+	},
+	{
+		"fields" : {
+			"ministry_code" : "REMS",
+			"name" : "Remedial Studies",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 84
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SETR",
+			"name" : "Service Trades",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 85
+	},
+	{
+		"fields" : {
+			"ministry_code" : "SPPR",
+			"name" : "Special Needs Programme",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 86
+	},
+	{
+		"fields" : {
+			"ministry_code" : "STDY",
+			"name" : "Study skills",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 87
+	},
+	{
+		"fields" : {
+			"ministry_code" : "TRAN",
+			"name" : "Transition/pre-employment",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 88
+	},
+	{
+		"fields" : {
+			"ministry_code" : "THTR",
+			"name" : "Travel, Hospitality, Tourism",
+			"slug" : "",
+			"group" : 8
+		},
+		"model" : "courses.subject",
+		"pk" : 89
+	},
+
+
+
+	{
+		"fields" : {
+			"ministry_code" : "ZN07",
+			"description" : "Year 7"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 1
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN08",
+			"description" : "Year 8"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 2
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN09",
+			"description" : "Year 9"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 3
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN10",
+			"description" : "Year 10"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 4
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN11",
+			"description" : "Year 11"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 5
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN12",
+			"description" : "Year 12"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 6
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZN13",
+			"description" : "Year 13 and above"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 7
+	},
+	{
+		"fields" : {
+			"ministry_code" : "ZNAD",
+			"description" : "Advanced"
+		},
+		"model" : "courses.instructionalyearlevel",
+		"pk" : 8
+	},
+
+
+
+        {
+                "pk": 1,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "?",
+                        "truancy_code": "u",
+                        "half_day_calc": false,
+                        "explanation": "This is the initial entry for a student not in class and the reason is unknown. It will be edited as relevant information becomes available about the reason for the non-attendance. If required, the SMS can be set by the school to automatically change the '?' code to a T after a configurable number of school days (eg 7)",
+                        "in_class": false,
+                        "reason": "Unknown reason (A temporary code)",
+                        "audit_code": "u"
+                }
+        },
+        {
+                "pk": 2,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "p",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "Student is in his/her regular class (This includes supervised study)",
+                        "in_class": true,
+                        "reason": "Present",
+                        "audit_code": "p"
+                }
+        },
+        {
+                "pk": 3,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "l",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "School policy will determine when this code is used. Eg. School policy may recommend that a student more than 10 minutes late is coded \"L\". Note this code does not contribute to a school's absence or truancy rate. ",
+                        "in_class": true,
+                        "reason": "Student late for class",
+                        "audit_code": "p"
+                }
+        },
+        {
+                "pk": 4,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "s",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "Student is known to be in the school's sickbay",
+                        "in_class": false,
+                        "reason": "Sickbay",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 5,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "d",
+                        "truancy_code": "j",
+                        "half_day_calc": true,
+                        "explanation": "Current legislation means this type of absence is counted as present for 1\u20442 day summaries. There must be documentation verifying the appointment. This code is not to be used for a stay in hospital. Use code \"M\"",
+                        "in_class": false,
+                        "reason": "Medical Appointment \u2013 doctor or dentist",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 6,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "i",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "This can include students who are out of class for various school appointments including: form teachers, dean, senior management, counsellor, sports administrator, coach, nurse, careers, as well as students on an administration activity such as messenger, collecting attendance etc.It does not include a student who has been removed from his/her regular class and sent to the administration area for disciplinary reasons. This student would be coded P in the class and the code would probably be changed to R by the senior staff member dealing with the student. ",
+                        "in_class": false,
+                        "reason": "Internal school appointment or activity \u2013 Dean, DP, sports administrator or coach, attendance officer etc",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 7,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "e",
+                        "truancy_code": "u",
+                        "half_day_calc": false,
+                        "explanation": "The explanation for the absence is accepted by the school as the reason for the absence, but the reason does not fit within the school's policy as a justifiable reason to take the student off school. (Even though the parents may consider the absence was justified and may have provided a written explanation). E.g. \u201cMolly had to stay home to look after her younger brother\u201d or \u201cwe went for a two week family holiday in the South Island\u201d This includes overseas absence not approved by the principal. (A parent's note does not provide justification)",
+                        "in_class": false,
+                        "reason": "Student is absent with an Explained, but unjustified reason",
+                        "audit_code": "u"
+                }
+        },
+        {
+                "pk": 8,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "m",
+                        "truancy_code": "j",
+                        "half_day_calc": false,
+                        "explanation": "Student is at home, or in hospital, because of illness or other medical reason. Depending on school policy a medical certificate may be requested for prolonged illness, e.g., three days, or as policy requires.",
+                        "in_class": false,
+                        "reason": "Student absent due to short-term illness/medical reasons",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 9,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "j",
+                        "truancy_code": "j",
+                        "half_day_calc": false,
+                        "explanation": "\u2022 Unplanned absences such as a bus breakdown, accident, road closure, extreme weather conditions etc \r\n\u2022 Planned non attendance such as national/local representation in a sporting or cultural event in New Zealand or overseas. (See also Code O) \r\n\u2022 Approved absence (including overseas) can also include bereavement, visiting an ill relative, exceptional family circumstances or a Section 27",
+                        "in_class": false,
+                        "reason": "Justified absence \u2013 reason for absence within the school policy",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 10,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "t",
+                        "truancy_code": "u",
+                        "half_day_calc": false,
+                        "explanation": "An absence where no verifiable explanation is received, or the explanation is trivial (throw-away): \r\n\u2022 I didn't feel like Maths so I took the period off\r\n\u2022 I had to finish an important assignment \r\n\u2022 I went down to the river\r\n\u2022 I went to the shops\r\n\u2022 we had a test and I wasn't ready for it\r\n",
+                        "in_class": false,
+                        "reason": "No information provided \u2013 truant (or throw-away explanation) ",
+                        "audit_code": "u"
+                }
+        },
+        {
+                "pk": 11,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "v",
+                        "truancy_code": "p",
+                        "half_day_calc": false,
+                        "explanation": "Students sitting examinations at school (if the SMS can provide attendance marking during exams.) Unsupervised study \u2013 school process verifies student is on the school-site. Note that supervised study is recorded as a regular timetabled class.",
+                        "in_class": true,
+                        "reason": "Examination or Unsupervised Study \u2013 student is on the school-site",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 12,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "x",
+                        "truancy_code": "j",
+                        "half_day_calc": false,
+                        "explanation": "Code X will count as a justified absence and contributes to 1\u20442 day absence summaries. Note that supervised study is recorded as a regular timetabled class. ",
+                        "in_class": false,
+                        "reason": "Exam leave Unsupervised study \u2013 student is off-site ",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 13,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "n",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "A school-based (on-site) activity. \r\n\u2022 cultural/sporting presentation/practice including swimming/athletic sports \r\n\u2022 one to one tuition either as tutor or tutored",
+                        "in_class": false,
+                        "reason": "On a school based activity ",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 14,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "q",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "A school-organised off-site activity including overseas \r\n\u2022 school trip (sporting, cultural or academic) \r\n\u2022 school camp",
+                        "in_class": false,
+                        "reason": "Attending an off-site school-organised  activity such as trip/camp ",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 15,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "w",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "Student is working for a recognised employer as part of their course (Gateway is an example)",
+                        "in_class": false,
+                        "reason": "Work experience ",
+                        "audit_code": "f"
+                }
+        },
+        {
+                "pk": 16,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "r",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "This code is for students who for a time period had an arrangement for alternative supervision, that may be in the administration corridor or in another teacher\u2019s class, instead of the regular scheduled class",
+                        "in_class": false,
+                        "reason": "Removed (temporarily) from regular class  (internal school student isolation) ",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 17,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "o",
+                        "truancy_code": "o",
+                        "half_day_calc": false,
+                        "explanation": "A student accompanying or visiting a family member who is on an overseas posting. Eg military or diplomatic. Other approved (justified) overseas absence is coded \"J\". If the absence is unapproved, it is coded \"E\"",
+                        "in_class": false,
+                        "reason": "Justified Overseas",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 18,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "k",
+                        "truancy_code": "j",
+                        "half_day_calc": true,
+                        "explanation": "The student is not in class, is on the school roll but funded elsewhere",
+                        "in_class": false,
+                        "reason": "Attending a Teen Parent Unit ",
+                        "audit_code": "n"
+                }
+        },
+        {
+                "pk": 19,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "a",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "The student is not in class, is on the school roll but funded elsewhere ",
+                        "in_class": false,
+                        "reason": "Attending Alternative Education ",
+                        "audit_code": "n"
+                }
+        },
+        {
+                "pk": 20,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "y",
+                        "truancy_code": "j",
+                        "half_day_calc": true,
+                        "explanation": "The student is not in class but in an approved environment for which the school is entitled to be funded ",
+                        "in_class": false,
+                        "reason": "Attending an Activity centre ",
+                        "audit_code": "f"
+                }
+        },
+        {
+                "pk": 21,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "f",
+                        "truancy_code": "p",
+                        "half_day_calc": true,
+                        "explanation": "The student is not in class but is on a legitimate off-site school-based course \r\n",
+                        "in_class": false,
+                        "reason": "Attending an off site course/class ",
+                        "audit_code": "s"
+                }
+        },
+        {
+                "pk": 22,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "h",
+                        "truancy_code": "j",
+                        "half_day_calc": true,
+                        "explanation": "The student is not in class but in an approved environment for which the school is entitled to be funded ",
+                        "in_class": false,
+                        "reason": "Attending a Health camp/Regional Health  School/Residential School",
+                        "audit_code": "f"
+                }
+        },
+        {
+                "pk": 23,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "c",
+                        "truancy_code": "j",
+                        "half_day_calc": true,
+                        "explanation": "Under existing legislation this type of absence is deemed to be Present when calculating 1\u20442 day summaries",
+                        "in_class": false,
+                        "reason": "Student is attending Justice Court proceedings",
+                        "audit_code": "j"
+                }
+        },
+        {
+                "pk": 24,
+                "model": "courses.attendancecode",
+                "fields": {
+                        "code": "u",
+                        "truancy_code": "j",
+                        "half_day_calc": false,
+                        "explanation": "Student is Stood Down or suspended according the conditions of Section 14 of the Education Act 1989 (This code is for the period of the stand down/suspension. It does not include the day the stand down was imposed)",
+                        "in_class": false,
+                        "reason": "Student is Stood down or Suspended",
+                        "audit_code": "j"
+                }
+        }
+]

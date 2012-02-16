@@ -678,7 +678,7 @@
     "model" : "people.country",
     "pk" : 97
   },
-  { "fields" : { "name" : "Libyan Arab Jamahiriya",
+  { "fields" : { "name" : "Libya",
         "iso_code" : "LY",
         "ministry_code" : "LBY"
       },
@@ -2512,6 +2512,22 @@
 		"fields" : {
 			"description" : "Friend",
 			"reciprocal" : 12
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 13,
+		"fields" : {
+			"description" : "Doctor",
+			"reciprocal" : 14
+		}
+	},
+	{
+		"model" : "people.relationshiptype",
+		"pk" : 14,
+		"fields" : {
+			"description" : "Patient",
+			"reciprocal" : 13
 		}
 	}
 ]

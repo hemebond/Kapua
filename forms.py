@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.forms import Form, ModelForm
+from django.forms import Form, ModelForm, Textarea
 
 class FormMixin(object):
 	def as_div(self):
@@ -32,3 +32,20 @@ class FormMixin(object):
 
 	class Meta:
 		abstract = True
+
+class HTMLEditorWidget(Textarea):
+	class Media:
+		js = (
+			'wymeditor/jquery/jquery.js',
+			'wymeditor/jquery/jquery-ui-1.8.11.custom.min.js',
+			'wymeditor/wymeditor/jquery.wymeditor.js',
+			'wymeditor/wymeditor/plugins/hovertools/jquery.wymeditor.hovertools.js',
+			'wymeditor/wymeditor/plugins/resizable/jquery.wymeditor.resizable.js',
+			'wymeditor/settings.js',
+			'wymeditor/init.js',
+		)
+		css = {
+			'screen': (
+				'wymeditor/jquery/jquery.ui.resizable.css',
+			)
+		}

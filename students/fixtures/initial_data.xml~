@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+	<object pk="1" model="students.studenttype">
+		<field type="CharField" name="ministry_code">FF</field>
+		<field type="CharField" name="description">International fee-paying student</field>
+	</object>
+	<object pk="2" model="students.studenttype">
+		<field type="CharField" name="ministry_code">FE</field>
+		<field type="CharField" name="description">NZAID sponsored student (formerly MFAT)</field>
+	</object>
+	<object pk="3" model="students.studenttype">
+		<field type="CharField" name="ministry_code">AE</field>
+		<field type="CharField" name="description">Student in Alternative Education</field>
+	</object>
+	<object pk="4" model="students.studenttype">
+		<field type="CharField" name="ministry_code">EX</field>
+		<field type="CharField" name="description">International Exchange student</field>
+	</object>
+	<object pk="5" model="students.studenttype">
+		<field type="CharField" name="ministry_code">AD</field>
+		<field type="CharField" name="description">Returning Adult student</field>
+	</object>
+	<object pk="6" model="students.studenttype">
+		<field type="CharField" name="ministry_code">RA</field>
+		<field type="CharField" name="description">Adult student</field>
+	</object>
+	<object pk="7" model="students.studenttype">
+		<field type="CharField" name="ministry_code">RE</field>
+		<field type="CharField" name="description">Regular student</field>
+	</object>
+	<object pk="8" model="students.studenttype">
+		<field type="CharField" name="ministry_code">TPREOM</field>
+		<field type="CharField" name="description">Teen Parent Regular Student over max. roll</field>
+	</object>
+
+	<object pk="1" model="students.zoningstatus">
+		<field type="CharField" name="ministry_code">INZN</field>
+		<field type="CharField" name="description">In Zone</field>
+	</object>
+	<object pk="2" model="students.zoningstatus">
+		<field type="CharField" name="ministry_code">OUTZ</field>
+		<field type="CharField" name="description">Out of Zone</field>
+	</object>
+	<object pk="3" model="students.zoningstatus">
+		<field type="CharField" name="ministry_code">NAPP</field>
+		<field type="CharField" name="description">Not Applicable</field>
+	</object>
+
+	<object pk="1" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">1</field>
+		<field type="CharField" name="description">AFS Intercultural Programmes NZ Inc</field>
+	</object>
+	<object pk="2" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">2</field>
+		<field type="CharField" name="description">ARK International Educational Travel &amp; Exchange</field>
+	</object>
+	<object pk="3" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">3</field>
+		<field type="CharField" name="description">ASSE NZ</field>
+	</object>
+	<object pk="4" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">4</field>
+		<field type="CharField" name="description">EF Foundation</field>
+	</object>
+	<object pk="5" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">5</field>
+		<field type="CharField" name="description">IGO International Ltd</field>
+	</object>
+	<object pk="6" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">7</field>
+		<field type="CharField" name="description">NZ / German Student Exchange</field>
+	</object>
+	<object pk="7" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">8</field>
+		<field type="CharField" name="description">NZ Institute of International Understanding</field>
+	</object>
+	<object pk="8" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">9</field>
+		<field type="CharField" name="description">Rotary International New Zealand</field>
+	</object>
+	<object pk="9" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">10</field>
+		<field type="CharField" name="description">STS High School Foundation</field>
+	</object>
+	<object pk="10" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">11</field>
+		<field type="CharField" name="description">YFU New Zealand Inc</field>
+	</object>
+	<object pk="11" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">12</field>
+		<field type="CharField" name="description">World Youth Service Society (WYSS)</field>
+	</object>
+	<object pk="12" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">13</field>
+		<field type="CharField" name="description">NZ / France Student Exchange</field>
+	</object>
+	<object pk="13" model="students.exchangescheme">
+		<field type="IntegerField" name="ministry_code">99</field>
+		<field type="CharField" name="description">Exchange Agreement (school obtained government approval)</field>
+	</object>
+
+	<object pk="" model="students.eligibilitycriteria">
+		<field type="IntegerField" name="ministry_code"></field>
+		<field type="CharField" name="description"></field>
+	</object>
+</django-objects>
+
