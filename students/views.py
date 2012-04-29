@@ -42,11 +42,7 @@ class StudentAdd(TemplateView):
 		return super(StudentAdd, self).dispatch(*args, **kwargs)
 
 	def post(self, request, *args, **kwargs):
-		student_form = StudentForm(data=self.request.POST, prefix="student")
-		invalid = False
-
-		if not student_form.is_valid():
-			invalid = True
+		student_form = StudentForm(self.request.POST, self.request.FILES, prefix="student")
 
 		# A person query string parameter can pre-fill the person form
 		person_pk = self.request.GET.get("person", None)
@@ -55,11 +51,9 @@ class StudentAdd(TemplateView):
 		else:
 			person = None
 
-		person_form = StudentPersonForm(instance=person, data=self.request.POST, prefix="person")
-		if not person_form.is_valid():
-			invalid = True
+		person_form = StudentPersonForm(self.request.POST, self.request.FILES, instance=person, prefix="person")
 
-		if not invalid:
+		if student_form.is_valid() and person_form.is_valid():
 			person = person_form.save()
 
 			# Add the person to the student record
@@ -77,7 +71,6 @@ class StudentAdd(TemplateView):
 		person_pk = self.request.GET.get("person", None)
 
 		if not context.get('student_form', False):
-			print "No student_form in context"
 			context['student_form'] = StudentForm(prefix="student")
 
 		if "person_form" not in context:
@@ -96,6 +89,47 @@ class StudentDetail(DetailView):
 	context_object_name = "student"
 
 
-class StudentEdit(UpdateView):
+class StudentEdit(TemplateView):
  	template_name = "students/student_edit.html"
- 	form_class = StudentForm
+
+	def post(self, request, *args, **kwargs):
+		student_pk = self.kwargs.get('pk', None)
+		student = get_object_or_404(Student, pk=student_pk)
+		student_form = StudentForm(self.request.POST, self.request.FILES, instance=student, prefix="student")
+
+		# A person query string parameter can pre-fill the person form
+		person_pk = student.person_id
+		if person_pk:
+			person = get_object_or_404(Person, pk=person_pk)
+		else:
+			person = None
+
+		person_form = StudentPersonForm(self.request.POST, self.request.FILES, instance=person, prefix="person")
+
+		if student_form.is_valid() and person_form.is_valid():
+			person = person_form.save()
+			student = student_form.save()
+			return HttpResponseRedirect(student.get_absolute_url())
+		else:
+			return self.render_to_response(self.get_context_data(student_form=student_form, person_form=person_form))
+
+	def get_context_data(self, **kwargs):
+		context = super(StudentEdit, self).get_context_data(**kwargs)
+
+		student_pk = self.kwargs.get('pk', None)
+		student = get_object_or_404(Student, pk=student_pk)
+
+		person_pk = student.person_id
+
+		if not context.get('student_form', False):
+			context['student_form'] = StudentForm(instance=student, prefix="student")
+
+		if "person_form" not in context:
+			if person_pk:
+				person = get_object_or_404(Person, pk=person_pk)
+			else:
+				person = None
+
+			context['person_form'] = StudentPersonForm(instance=person, prefix="person")
+
+		return context
