@@ -15,154 +15,201 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from kapua.courses.models import *
-from kapua.courses.forms import *
-from django.views.generic import ListView, TemplateView, DetailView
-from django.core.urlresolvers import reverse
-from django.core import urlresolvers
-from django.http import HttpResponseRedirect, HttpResponse
 
-#def index(request):
-#	courses = Course.objects.all()
-
-#	s_ids = courses.values_list('subject', flat=True).distinct()
-#	subjects = Subject.objects.filter(pk__in=s_ids)
-
-#	g_ids = subjects.values_list('group', flat=True).distinct()
-#	groups = SubjectGroup.objects.filter(pk__in=g_ids)
-
-#	mylist = {}
-
-#	for group in groups:
-#		mylist[group.pk] = [group, {}]
-
-#	for subject in subjects:
-#		mylist[subject.group.pk][1][subject.pk] = [subject, []]
-
-#	for course in courses:
-#		mylist[course.subject.group.pk][1][course.subject.pk][1].append(course)
-
-#	return render_to_response('courses/index.html', {
-#			'mylist': mylist
-#		},
-#		context_instance=RequestContext(request)
-#	)
-
-class SubjectListView(ListView):
-#	context_object_name = "list"
-#	template_name = "books/books_by_publisher.html",
-
-	def get_queryset(self):
-		print self.kwargs['subjectgroup']
-		group = get_object_or_404(SubjectGroup, slug__iexact=self.kwargs['subjectgroup'])
-		return Subject.objects.filter(group=group)
-
-class CourseListView(ListView):
-	template_name = "courses/course_list.html"
-
-	def get_queryset(self):
-		qs = Course.objects.all()
-		try:
-#			subject = get_object_or_404(Subject, slug__iexact=self.kwargs['subject'])
-			subject = get_object_or_404(Subject, pk=self.kwargs['subject'])
-			qs = qs.filter(subject=subject)
-		except:
-			pass
-		return qs
-
-def course_list(request):
-	courses = Course.objects.all()
-	return render_to_response('courses/course_list.html', {
-			'object_list': courses,
-		},
-		context_instance=RequestContext(request)
-	)
-
-def course_detail(request, course_pk):
-	course = get_object_or_404(Course, pk=course_pk)
-	object_type = ContentType.objects.get_for_model(course)
-	o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=course.id)
-	return render_to_response('courses/course_detail.html', {
-			'object': o,
-			'prev': o.previous(),
-			'next': o.next(),
-		},
-		context_instance=RequestContext(request)
-	)
-
-def course_edit(request, course_pk=None ):
-	if course_pk:
-		o = get_object_or_404(Course, pk=course_pk)
-	else:
-		o = Course()
-
-	if request.method == 'POST':
-		form = CourseForm(request.POST, instance=o, prefix="course")
-
-		if form.is_valid():
-			form.save()
-			print "o.od: %s" % o.id
-			if request.POST['_continue']:
-				return HttpResponseRedirect(reverse('course_edit', args=(o.id,)))
-			return HttpResponseRedirect(reverse('kapua.courses.views.course_detail', args=(o.id,)))
-	else:
-		form = CourseForm(instance=o, prefix="course")
-
-	return render_to_response('courses/course_edit.html', {'form': form, 'object': o}, context_instance=RequestContext(request))
-
-def page_detail(request, page_pk):
-	page = get_object_or_404(Page, pk=page_pk)
-	object_type = ContentType.objects.get_for_model(page)
-	o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=page.id)
-	return render_to_response("courses/page_detail.html", {
-			"object": o,
-			'prev': o.previous(),
-			'next': o.next(),
-		},
-		context_instance=RequestContext(request)
-	)
-
-def page_edit(request, course_pk=None, page_pk=None):
-	if page_pk:
-		o = get_object_or_404(Page, pk=page_pk)
-	else:
-		o = Page()
-		if course_pk:
-			o.course = Course.objects.get(pk=course_pk)
-		
-	if request.method == 'POST':
-		form = PageForm(request.POST, instance=o, prefix="page")
-
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(o.get_absolute_url())
-	else:
-		form = PageForm(instance=o, prefix="page")
-
-	return render_to_response('courses/page_edit.html', {'form': form, 'object': o}, context_instance=RequestContext(request))
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
+from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, TemplateView, DetailView, UpdateView, CreateView
+from django.http import HttpResponseRedirect
 
 from mptt.exceptions import InvalidMove
-from mptt.forms import MoveNodeForm
-def page_move(request, page_pk):
-	page = get_object_or_404(Page, pk=page_pk)
-	object_type = ContentType.objects.get_for_model(page)
-	o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=page.id)
+from kapua.models import TreeNode
+from kapua.forms import MoveNodeForm
+from kapua.courses.models import *
+from kapua.courses.forms import *
 
-	if request.method == 'POST':
-		form = MoveNodeForm(o, request.POST)
-		if form.is_valid():
-			try:
-				o = form.save()
-				return HttpResponseRedirect(o.get_absolute_url())
-			except InvalidMove:
-				pass
-	else:
-		form = MoveNodeForm(o)
+
+class CourseList(ListView):
+	model = Course
+
+
+class CourseAdd(CreateView):
+	template_name = "courses/course_edit.html"
+	form_class = CourseForm
+	context_object_name = "course"
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(CourseAdd, self).dispatch(*args, **kwargs)
+
+
+class CourseDetail(DetailView):
+	template_name = "courses/course_detail.html"
+	model = Course
+	context_object_name = "course"
 	
-	return render_to_response('courses/page_move.html', {
-        'form': form,
-        'page': o,
-        'page_tree': TreeNode.tree.all(),
-    }, context_instance=RequestContext(request))
+	def get_context_data(self, **kwargs):
+		# Call the base implementation first to get a context
+		context = super(CourseDetail, self).get_context_data(**kwargs)
+
+		# Add the tree nodes for pages
+		object_type = ContentType.objects.get_for_model(self.object)
+		treenode = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=self.object.id)
+
+		context['treenode'] = treenode
+		context['prev'] = treenode.previous()
+		context['next'] = treenode.next()
+		
+		return context
+
+
+class CourseEdit(UpdateView):
+	template_name = "courses/course_edit.html"
+	form_class = CourseForm
+	model = Course
+	context_object_name = "course"
+	
+	def get_context_data(self, **kwargs):
+		# Call the base implementation first to get a context
+		context = super(CourseEdit, self).get_context_data(**kwargs)
+
+		object_type = ContentType.objects.get_for_model(self.object)
+		treenode = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=self.object.pk)
+
+		context['treenode'] = treenode
+		
+		return context
+
+
+class PageAdd(CreateView):
+	template_name = "courses/page_edit.html"
+	form_class = PageForm
+
+	def get_course_treenode(self, course_pk):
+		"""
+		Returns the treenode that points to the course
+		"""
+		object_type = ContentType.objects.get_for_model(Course)
+		return TreeNode.objects.get(content_type__pk=object_type.pk, object_id=course_pk)
+
+	# Have to override this method because PageForm requires the "root" argument
+	def get_form_kwargs(self):
+		"""
+		Returns the keyword arguments for instanciating the form.
+		"""
+		kwargs = super(PageAdd, self).get_form_kwargs()
+
+		course_pk = self.kwargs.get('pk')
+		kwargs.update({'root': self.get_course_treenode(course_pk)})
+		return kwargs
+
+	def post(self, request, *args, **kwargs):
+		self.object = None
+
+		course_pk = kwargs.get("pk")
+		course = get_object_or_404(Course, pk=course_pk)
+		course_treenode = self.get_course_treenode(course_pk)
+
+		form = PageForm(data=self.request.POST, root=course_treenode)
+
+		if form.is_valid():
+			self.object = form.save(commit=False)
+			self.object.course_id = course_pk
+			return self.form_valid(form)
+		else:
+			return self.form_invalid(form)
+
+	def form_valid(self, form):
+		self.object = form.save()
+
+		course_treenode = self.get_course_treenode(self.object.course_id)
+		node = TreeNode(content_object=self.object, parent=course_treenode)
+
+		position = form.cleaned_data.get('position', None)
+		target = form.cleaned_data.get('target', None)
+		if not position or not target:
+			position = 'last-child'
+			target = course_treenode
+
+		node.insert_at(target=target, position=position, save=True)
+
+		return super(PageAdd, self).form_valid(form)
+
+
+class PageDetail(DetailView):
+	template_name = "courses/page_detail.html"
+	context_object_name = "page"
+	model = Page
+	
+	def get_context_data(self, **kwargs):
+		# Call the base implementation first to get a context
+		context = super(PageDetail, self).get_context_data(**kwargs)
+		
+		# Add the tree nodes for adjacent pages
+		object_type = ContentType.objects.get_for_model(self.object)
+		treenode = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=self.object.id)
+
+		context['treenode'] = treenode
+		context['prev'] = treenode.previous()
+		context['next'] = treenode.next()
+		
+		return context
+
+
+class PageEdit(UpdateView):
+	template_name = "courses/page_edit.html"
+	form_class = PageForm
+	model = Page
+
+	# Have to override this method because PageForm requires the "root" and "node" arguments
+	def get_form_kwargs(self):
+		"""
+		Returns the keyword arguments for instanciating the form.
+		"""
+		kwargs = super(PageEdit, self).get_form_kwargs()
+
+		page_pk = self.kwargs.get('pk')
+		node = self.get_page_treenode(page_pk)
+		kwargs.update({'root': node.get_root(), 'node': node})
+
+		return kwargs
+
+	def get_page_treenode(self, page_pk):
+		"""
+		Returns the treenode that points to this page
+		"""
+		object_type = ContentType.objects.get_for_model(Page)
+		return TreeNode.objects.get(content_type__pk=object_type.pk, object_id=page_pk)
+
+	def form_valid(self, form):
+		self.object = form.save()
+
+		position = form.cleaned_data.get('position', None)
+		if position:
+			node = self.get_page_treenode(self.object.pk)
+			target = form.cleaned_data.get('target')
+			node.move_to(target=target, position=position)
+
+		return super(PageEdit, self).form_valid(form)
+
+
+class PageMove(UpdateView):
+	template_name = "courses/page_move.html"
+	model = TreeNode
+	form_class = MoveNodeForm
+
+	def get_object(self, queryset=None):
+		# Use a custom queryset if provided; this is required for subclasses
+		# like DateDetailView
+		if queryset is None:
+			queryset = self.get_queryset()
+
+		pk = self.kwargs.get(self.pk_url_kwarg, None)
+		page = get_object_or_404(Page, pk=pk)
+		object_type = ContentType.objects.get_for_model(page)
+		treenode = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=pk)
+
+		return treenode

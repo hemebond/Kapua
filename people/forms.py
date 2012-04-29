@@ -17,16 +17,20 @@
 
 from django.db import models
 from django.forms import ModelForm, RadioSelect
-from kapua.forms import FormMixin
+from django.forms.models import modelformset_factory, inlineformset_factory
 from django.shortcuts import HttpResponseRedirect
 from kapua.people.models import Person, Relationship
 
 class PersonForm(ModelForm):
 	class Meta:
 		model = Person
+		fields = ('legal_first_name', 'middle_names', 'legal_last_name', 'gender')
 
-class PersonEditForm(FormMixin, ModelForm):
+
+class PersonEditForm(ModelForm):
 	class Meta:
 		model = Person
-		fields = ('legal_last_name', 'legal_first_name', 'gender', 'birth_date', 'ethnicity', 'iwi', 'citizenship', 'privacy_indicator', 'middle_names', 'preferred_first_name', 'preferred_last_name', 'residence',)
+		fields = ('legal_first_name', 'preferred_first_name', 'middle_names', 'legal_last_name', 'preferred_last_name', 'gender', 'birth_date', 'ethnicity', 'iwi', 'citizenship', 'privacy_indicator', 'residence', 'phone', 'email', 'photo', 'user')
 
+
+RelationshipFormSet = inlineformset_factory(Person, Relationship, fk_name="person", fields=('related_person', 'relationship_type',))

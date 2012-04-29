@@ -15,35 +15,44 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.db import models
-from django.forms import ModelForm, RadioSelect, Textarea
-from kapua.forms import FormMixin, HTMLEditorWidget
-from django.shortcuts import HttpResponseRedirect
+from django.db.models import Q
+from django.utils.translation import ugettext_lazy as _
+from django.forms import ModelForm
 from kapua.courses.models import Course, Page
+from mptt.forms import TreeNodeChoiceField, TreeNodePositionField
 
 class CourseForm(ModelForm):
 	class Meta:
 		model = Course
-	
-	class Media:
-		js = (
-			'js/jquery/jquery-1.6.2.js',
-			'js/jquery/ui/jquery.ui.core.js',
-			'js/jquery/ui/jquery.ui.widget.js',
-			'js/jquery/ui/jquery.ui.mouse.js',
-			'js/jquery/ui/jquery.ui.sortable.js',
-			'js/jquery.cookie.js',
-			'js/jquery.ui.nestedSortable.js',
-		)
-		css = {
-			'screen': (
-				'admin/css/page_tree.css',
-			)
-		}
+
 
 class PageForm(ModelForm):
+	target = TreeNodeChoiceField(queryset=None, required=False)
+	position = TreeNodePositionField(required=False)
+
 	class Meta:
 		model = Page
-		widgets = {
-				'content': HTMLEditorWidget(attrs={'class': 'wymeditor',}),
-		}
+		fields = ('name', 'content', 'target', 'position')
+
+	def __init__(self, root, node=None, *args, **kwargs):
+		super(PageForm, self).__init__(*args, **kwargs)
+
+		# Use some friendlier names
+		position_choices = (
+			('', ''),
+			('first-child', _("Under")),
+			('left', _("Before")),
+			('right', _("After"))
+		)
+
+		if node:
+			# Exclude the root node (the course) and the current page tree from the list of possible targets
+			valid_targets = root.get_descendants().exclude(Q(lft__gte=node.lft) & Q(rght__lte=node.rght))
+		else:
+			# Exclude the root node (the course) from the list of possible targets
+			valid_targets = root.get_descendants()
+
+		print valid_targets
+
+		self.fields['target'].queryset = valid_targets
+		self.fields['position'].choices = position_choices

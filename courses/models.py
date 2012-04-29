@@ -15,29 +15,37 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
+import datetime
+
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 from django.db import models
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from kapua.students.models import Student
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from attachments.models import Attachment
-from kapua import settings
 from kapua.models import TreeNode
 from django.db.models.signals import post_save
 
 def create_tree_node(sender, **kwargs):
-		if kwargs.get('created', False) and not kwargs.get('raw', False):
-			i = kwargs.get('instance')
-			if hasattr(i, 'course'):
-				object_type = ContentType.objects.get_for_model(i.course)
-				o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=i.course_id)
-				TreeNode.objects.create(content_object=i, parent=o)
-			else:
-				TreeNode.objects.create(content_object=i)
+	"""
+		This creates a treenode for a page or course so they can be rendered
+		and manipulated as a tree. MPTT.
+	"""
+	if kwargs.get('created', False) and not kwargs.get('raw', False):
+		i = kwargs.get('instance')
+		if hasattr(i, 'course'):
+			object_type = ContentType.objects.get_for_model(i.course)
+			o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=i.course_id)
+			TreeNode.objects.create(content_object=i, parent=o)
+		else:
+			TreeNode.objects.create(content_object=i)
 
 class SubjectGroup(models.Model):
+	"""
+		A group of subjects. Provided by the MoE.
+	"""
 	name = models.CharField(max_length=64)
 	slug = models.SlugField()
 
@@ -54,6 +62,9 @@ class SubjectGroup(models.Model):
 		ordering = ['name']
 
 class Subject(models.Model):
+	"""
+		Subject list. Provided by the MoE.
+	"""
 	ministry_code = models.CharField(max_length=4)
 	name = models.CharField(max_length=64)
 	slug = models.SlugField()
@@ -72,8 +83,13 @@ class Subject(models.Model):
 		verbose_name = _('Subject')
 		ordering = ['name']
 
-# [34] Instructional year level (for subjects 1-15)
+
 class InstructionalYearLevel(models.Model):
+	"""
+		Describes the level of the course.
+		For MoE returns.
+		[34] Instructional year level (for subjects 1-15)
+	"""
 	ministry_code = models.CharField(max_length=4)
 	description = models.CharField(max_length=32)
 
@@ -84,6 +100,11 @@ class InstructionalYearLevel(models.Model):
 		verbose_name = _('Instructional Year Level')
 
 class Assessment(models.Model):
+	"""
+		An assessment can be attached to anything and allow students to
+		make submissions to it. There will be different types of submissions
+		and some will allow online testing.
+	"""
 	name = models.CharField(max_length=32, blank=True, null=True)
 	# Generic relationship to link to courses, topics or activities
 	content_type = models.ForeignKey(ContentType)
@@ -97,38 +118,48 @@ class Assessment(models.Model):
 		return self.name
 
 class Course(models.Model):
+	"""
+		This is the main object that the others point to. It's a collection
+		of activities, assessments and learning materials.
+	"""
 	subject = models.ForeignKey(Subject, blank=True, null=True)
 	instructional_year_level = models.ForeignKey(InstructionalYearLevel, blank=True, null=True)
 	# Need a way to track the learning level of a course for primary school
 	#level = models.Something()
 	name = models.CharField(max_length=64)
-	short_name = models.CharField(max_length=16)
-	nodes = generic.GenericRelation(TreeNode)
+	short_name = models.CharField(max_length=16,
+                                  help_text="A short code-name for this course.",
+								  blank=True,
+								  null=True)
+	content = models.TextField(_('Content'))
+
+	treenode = generic.GenericRelation(TreeNode)
 	attachments = generic.GenericRelation(Attachment)
 	assessments = generic.GenericRelation(Assessment)
-	
+
 	# change tracking
 	created = models.DateTimeField(auto_now_add=True)
 	last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
 
-#	@models.permalink
-#	def get_absolute_url(self):
-#		return ('testnameview', (str(self.id)))
 	@models.permalink
 	def get_absolute_url(self):
-		return ('kapua.courses.views.course_detail', [str(self.pk)])
+		return ('kapua_course_detail', [str(self.pk)])
 
 	def __unicode__(self):
-		return u"%s" % self.name
+		return unicode(self.name)
 
 	class Meta:
 		verbose_name = _('Course')
 
 post_save.connect(create_tree_node, sender=Course)
 
-# A course page is like a university "paper"; a small component grouped with other
-# components to make up a course.
+
+
 class Page(models.Model):
+	"""
+		A course page is like a university "paper"; a small component
+		grouped with other components to make up a course.
+	"""
 	course = models.ForeignKey(Course)
 	name = models.CharField(max_length=64)
 	content = models.TextField(_('Content'))
@@ -137,24 +168,24 @@ class Page(models.Model):
 	attachments = generic.GenericRelation(Attachment)
 
 	# change tracking
-	created = models.DateTimeField()
-	last_modified = models.DateTimeField()
-	
+	created = models.DateTimeField(auto_now_add=True)
+	last_modified = models.DateTimeField(auto_now=True)
+
 	def __unicode__(self):
 		return self.name
-	
+
 	@models.permalink
 	def get_absolute_url(self):
-		return ('kapua.courses.views.page_detail', [str(self.id)])
+		return ('kapua_page_detail', [str(self.pk)])
 
-post_save.connect(create_tree_node, sender=Page)
+#post_save.connect(create_tree_node, sender=Page)
 
 #	def save(self):
 #		import bleach
 #		self.content = bleach.clean(self.content, tags=settings.ALLOWED_TAGS, attributes=settings.ALLOWED_ATTRS)
 #
 #		return super(Fragment, self).save()
-	
+
 #class GradeSystem(models.Model):
 #	name = models.CharField(max_length=64)
 #
@@ -166,32 +197,50 @@ post_save.connect(create_tree_node, sender=Page)
 #	pass
 
 class Grade(models.Model):
+	"""
+		This is the score for an assessment for a particular student.
+	"""
 	assessment = models.ForeignKey(Assessment)
 	student = models.ForeignKey(Student)
 	score = models.DecimalField(max_digits=10, decimal_places=9, blank=True, null=True)
 
 class Submission(models.Model):
+	"""
+		Students make a submission for an assessment.
+	"""
 	assessment = models.ForeignKey(Assessment)
 	student = models.ForeignKey(Student)
 	created = models.DateTimeField()
 
 class Schedule(models.Model):
+	"""
+		This is like a calendar.
+	"""
 	name = models.CharField(max_length=32)
 	course = models.ForeignKey(Course)
-	
+
 	# change tracking
 	created = models.DateTimeField(auto_now_add=True)
 	last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
-	
+
 	def __unicode__(self):
 		return self.name
 
+	def get_current_students(self):
+		return Enrolment.objects.filter(pk=self.pk) \
+				.filter(start__lte=datetime.date.today()) \
+				.filter(end__gte=datetime.date.today())
+
 class Activity(models.Model):
+	"""
+		This is like a calendar event.
+	"""
 	schedules = models.ManyToManyField(Schedule, related_name="activities")
 	subject = models.CharField(max_length=64)
 	track_attendance = models.BooleanField(default=True)
 	assessments = generic.GenericRelation(Assessment)
-	date_and_time = models.DateTimeField()
+	start = models.DateTimeField()
+	end = models.DateTimeField()
 
 	# change tracking
 	created = models.DateTimeField(auto_now_add=True)
@@ -205,6 +254,10 @@ class Activity(models.Model):
 		verbose_name_plural = _('Activities')
 
 class AttendanceCode(models.Model):
+	"""
+		Ministry-provided codes that the administrator uses to categorise
+		the students absense.
+	"""
 	code = models.CharField(max_length=1, primary_key=True)
 	in_class = models.BooleanField()
 	reason = models.CharField(max_length=128)
@@ -217,11 +270,19 @@ class AttendanceCode(models.Model):
 		return self.code
 
 class Attendance(models.Model):
+	"""
+		Was the student at the activity?
+	"""
 	activity = models.ForeignKey(Activity)
 	student = models.ForeignKey(Student)
 	code = models.ForeignKey(AttendanceCode)
 
 class Enrolment(models.Model):
+	"""
+		A student is enrolled in a course schedule for a length of time.
+		Their calendar will collect activities, for this schedule, during the
+		period they are enrolled.
+	"""
 	student = models.ForeignKey(Student)
 	schedule = models.ForeignKey(Schedule)
 	start = models.DateField()

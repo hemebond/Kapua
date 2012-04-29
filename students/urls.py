@@ -16,8 +16,11 @@
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.conf.urls.defaults import *
+from kapua.students.views import StudentList, StudentAdd, StudentDetail, StudentEdit
 
 urlpatterns = patterns('kapua.students.views',
-	(r'^$', 'index'),
-	(r'^(?P<student_id>\d+)/$', 'detail'),
+	url(r'^$', StudentList.as_view(), name="kapua_student_list"),
+	url(r'^add/$', StudentAdd.as_view(), name="kapua_student_add"),
+	url(r'^(?P<pk>\d+)/$', StudentDetail.as_view(), name="kapua_student_detail"),
+	url(r'^(?P<pk>\d+)/edit/$', StudentEdit.as_view(), name="kapua_student_edit"),
 )

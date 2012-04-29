@@ -55,17 +55,20 @@ class EligibilityCriteria(models.Model):
 	def __unicode__(self):
 		return self.description
 
-class ORS(models.Model):
-	ministry_code = models.CharField(max_length=1, db_index=True)
-	description = models.CharField(max_length=128)
-
-	def __unicode__(self):
-		return self.description
-
 class Student(models.Model):
 	person = models.OneToOneField(Person)
 	ministry_id = models.IntegerField(unique=True, max_length=10) # [3] National Student Number
-	ors = models.ForeignKey(ORS, verbose_name="ORS and Section 9", default="1") # [16] ORS and Section 9
+
+	# [16] ORS and Section 9
+	ors = models.CharField(
+		max_length=1,
+		choices=(
+			('N', "No Section 9, no ORS"),
+			('H', "ORS - High Level"),
+			('V', "ORS - Very High Level"),
+			('S', "Section 9 without ORS"),
+		)
+	)
 	funding_year_level = models.IntegerField(max_length=2) # [17] Funding Year Level
 	student_type = models.ForeignKey(StudentType, default="1") # [18] Type of Student
 	zoning_status = models.ForeignKey(ZoningStatus, default="3") # [20] Zoning Status
@@ -77,6 +80,10 @@ class Student(models.Model):
 
 	def __unicode__(self):
 		return "%s" % self.person
+
+	@models.permalink
+	def get_absolute_url(self):
+		return ("kapua_student_detail", (), {'pk': self.pk,})
 
 class LeaveReason(models.Model):
 	ministry_code = models.CharField(max_length=1)

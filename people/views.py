@@ -15,51 +15,77 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-#from django.contrib.formtools.wizard.views import SessionWizardView
+from django.forms.models import modelformset_factory, inlineformset_factory
+
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.core import urlresolvers
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.views.generic import View, ListView, CreateView, UpdateView, DetailView, TemplateView
 from kapua.people.models import Person, Relationship
-from kapua.people.forms import PersonForm, PersonEditForm
+from kapua.people.forms import PersonForm, PersonEditForm, RelationshipFormSet
 from operator import attrgetter
 
-def index(request):
-	people_list = sorted(Person.objects.all(), key=attrgetter('last_name', 'first_name'))
-	return render_to_response('people/index.html', {
-			'people_list':people_list
-		},
-		context_instance=RequestContext(request)
-	)
+class PersonList(ListView):
+	model = Person
 
-def detail(request, person_id):
-	p = get_object_or_404(Person, pk=person_id)
-	change_url = urlresolvers.reverse('admin:people_person_change', args=(p.id,))
-	return render_to_response('people/detail.html', {
-			'person':p,
-			'change_url':change_url,
-		},
-		context_instance=RequestContext(request)
-	)
 
-def edit(request, person_id):
-	person = get_object_or_404(Person, pk=person_id)
-	if request.method == 'POST':
-		person_form = PersonEditForm(request.POST, instance=person, prefix="person")
+class PersonAdd(CreateView):
+	template_name = "people/person_edit.html"
+	form_class = PersonForm
 
-		if person_form.is_valid():
-			return HttpResponseRedirect(reverse('kapua.people.views.detail', args=(person.id,)))
-	else:
-		person_form = PersonEditForm(instance=person, prefix="person")
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(PersonAdd, self).dispatch(*args, **kwargs)
 
-	return render_to_response('people/edit.html', {'form': person_form}, context_instance=RequestContext(request))
+	def form_valid(self, form):
+		self.object = form.save()
+		kwargs = self.get_form_kwargs()
+		if "_continue" in kwargs.get("data"):
+			return HttpResponseRedirect(reverse('kapua_person_edit', kwargs={"pk":self.object.pk}))
 
-def add(request):
-	form = PersonForm
-	if request.method == 'POST':
-		print "Got your POST, thanks."
-		return HttpResponseRedirect(reverse('kapua.people.views.detail', args=(p.id,)))
+		return super(PersonAdd, self).form_valid(form)
 
-	return render_to_response('people/add.html', {'form': form}, context_instance=RequestContext(request))
 
+class PersonDetail(DetailView):
+	model = Person
+
+
+class PersonEdit(TemplateView):
+	template_name = "people/person_edit.html"
+	form_class = PersonEditForm
+	model = Person
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(PersonEdit, self).dispatch(*args, **kwargs)
+
+	def post(self, request, *args, **kwargs):
+		person_pk = self.kwargs.get('pk', None)
+		person = get_object_or_404(Person, pk=person_pk)
+
+		formset = RelationshipFormSet(self.request.POST, self.request.FILES, instance=person)
+		form = PersonEditForm(self.request.POST, self.request.FILES, instance=person)
+
+		if form.is_valid() and formset.is_valid():
+			form.save()
+			formset.save()
+			return HttpResponseRedirect(person.get_absolute_url())
+		else:
+			return self.render_to_response(self.get_context_data(form=form, relationship_formset=formset))
+
+	def get_context_data(self, **kwargs):
+		context = super(PersonEdit, self).get_context_data(**kwargs)
+
+		if not self.request.POST:
+			person_pk = self.kwargs.get('pk', None)
+			person = get_object_or_404(Person, pk=person_pk)
+			context['form'] = PersonEditForm(instance=person)
+
+			formset = RelationshipFormSet(instance=person)
+			context['relationship_formset'] = formset
+
+		return context

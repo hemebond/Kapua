@@ -15,26 +15,87 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
+from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
+
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import View, ListView, CreateView, UpdateView, DetailView, TemplateView
+
 from kapua.students.models import Student
+from kapua.students.forms import StudentForm, StudentPersonForm
+from kapua.people.models import Person
 
-#if "django.contrib.comments" in settings.INSTALLED_APPS:
-#	print "Comments are enabled"
 
-def index(request):
-	student_list = Student.objects.all()
-	return render_to_response('students/index.html', {
-			'student_list': student_list
-		},
-		context_instance=RequestContext(request)
-	)
+class StudentList(ListView):
+	model = Student
 
-def detail(request, student_id):
-	s = get_object_or_404(Student, pk=student_id)
-	return render_to_response('students/detail.html', {
-			'student':s,
-		},
-		context_instance=RequestContext(request)
-	)
+
+class StudentAdd(TemplateView):
+	template_name = "students/student_edit.html"
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(StudentAdd, self).dispatch(*args, **kwargs)
+
+	def post(self, request, *args, **kwargs):
+		student_form = StudentForm(data=self.request.POST, prefix="student")
+		invalid = False
+
+		if not student_form.is_valid():
+			invalid = True
+
+		# A person query string parameter can pre-fill the person form
+		person_pk = self.request.GET.get("person", None)
+		if person_pk:
+			person = get_object_or_404(Person, pk=person_pk)
+		else:
+			person = None
+
+		person_form = StudentPersonForm(instance=person, data=self.request.POST, prefix="person")
+		if not person_form.is_valid():
+			invalid = True
+
+		if not invalid:
+			person = person_form.save()
+
+			# Add the person to the student record
+			student = student_form.save(commit=False)
+			student.person = person
+			student.save()
+			return HttpResponseRedirect(student.get_absolute_url())
+		else:
+			return self.render_to_response(self.get_context_data(student_form=student_form, person_form=person_form))
+
+	def get_context_data(self, **kwargs):
+		context = super(StudentAdd, self).get_context_data(**kwargs)
+
+		# A person query string parameter can pre-fill the person form
+		person_pk = self.request.GET.get("person", None)
+
+		if not context.get('student_form', False):
+			print "No student_form in context"
+			context['student_form'] = StudentForm(prefix="student")
+
+		if "person_form" not in context:
+			if person_pk:
+				person = get_object_or_404(Person, pk=person_pk)
+			else:
+				person = None
+
+			context['person_form'] = StudentPersonForm(instance=person, prefix="person")
+
+		return context
+
+
+class StudentDetail(DetailView):
+	model = Student
+	context_object_name = "student"
+
+
+class StudentEdit(UpdateView):
+ 	template_name = "students/student_edit.html"
+ 	form_class = StudentForm

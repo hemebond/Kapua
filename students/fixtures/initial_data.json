@@ -27292,40 +27292,5 @@
 			"ministry_code": "C",
 			"description": "Continuous Absence"
 		}
-	},
-
-
-
-	{
-		"model": "students.ors",
-		"fields": {
-			"ministry_code": "N",
-			"description": "No Section 9, no ORS"
-		},
-		"pk": 1
-	},
-	{
-		"model": "students.ors",
-		"fields": {
-			"ministry_code": "H",
-			"description": "ORS - High Level"
-		},
-		"pk": 2
-	},
-	{
-		"model": "students.ors",
-		"fields": {
-			"ministry_code": "V",
-			"description": "ORS - Very High Level"
-		},
-		"pk": 3
-	},
-	{
-		"model": "students.ors",
-		"fields": {
-			"ministry_code": "S",
-			"description": "Section 9 without ORS"
-		},
-		"pk": 4
 	}
 ]

@@ -16,23 +16,15 @@
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.conf.urls.defaults import *
-from django.views.generic import ListView, DetailView
 from kapua.courses.views import *
-from kapua.courses.models import Course, SubjectGroup
 
 urlpatterns = patterns('kapua.courses.views',
-#	url(r'^(?P<pk>\d+)/$', DetailView.as_view(model=Course, template_name="courses/course_detail.html"), name='course_detail'),
-	(r'^$', 'course_list'),
-	(r'^add/$', 'course_edit', {}, 'course_add'),
-	(r'^(?P<course_pk>\d+)/$', 'course_detail'),
-	(r'^(?P<course_pk>\d+)/edit/$', 'course_edit', {}, 'course_edit'),
-	(r'^(?P<course_pk>\d+)/add/$', 'page_edit', {}, 'page_add'),
-	(r'^pages/(?P<page_pk>\d+)/$', 'page_detail'),
-	(r'^pages/(?P<page_pk>\d+)/edit/$', 'page_edit'),
-	(r'^pages/(?P<page_pk>\d+)/move/$', 'page_move'),
-#	(r'^by_subject/(?P<subject_group>[-\w]+)/(?P<subject>[-\w]+)/$', CourseListView.as_view()),
-	url(r'^(?P<subjectgroup>[-\w]+)/(?P<subject>\d+)/$', CourseListView.as_view(), name="course_list"),
-	url(r'^(?P<slug>[-\w]+)/$', DetailView.as_view(model=SubjectGroup, template_name="courses/subjectgroup_detail.html"), name="subjectgroup_detail"),
-#	(r'^$', ListView.as_view(model=Course)),
-#	(r'^add/$', "add"),
+	url(r'^$', CourseList.as_view(), name="kapua_course_list"),
+	url(r'^add/$', CourseAdd.as_view(), name="kapua_course_add"),
+	url(r'^(?P<pk>\d+)/$', CourseDetail.as_view(), name="kapua_course_detail"),
+	url(r'^(?P<pk>\d+)/edit/$', CourseEdit.as_view(), name="kapua_course_edit"),
+	url(r'^(?P<pk>\d+)/add/$', PageAdd.as_view(), name="kapua_page_add"),
+	url(r'^pages/(?P<pk>\d+)/$', PageDetail.as_view(), name="kapua_page_detail"),
+	url(r'^pages/(?P<pk>\d+)/edit/$', PageEdit.as_view(), name="kapua_page_edit"),
+	url(r'^pages/(?P<pk>\d+)/move/$', PageMove.as_view(), name="kapua_page_move"),
 )

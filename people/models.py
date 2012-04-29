@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
+import datetime
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import User
@@ -76,18 +78,19 @@ class Residence(models.Model):
 		unique_together = ('number', 'street', 'suburb', 'city', 'country')
 		ordering = ['country', 'city', 'suburb', 'street', 'number']
 
-#class PersonManager(models.Manager):
-#	def get_query_set(self):
-#		return super(PersonManager, self).get_query_set().extra(select={'first_name': "CASE WHEN LENGTH(preferred_first_name) > 0 THEN preferred_first_name ELSE legal_first_name END", 'last_name': "CASE WHEN LENGTH(preferred_last_name) > 0 THEN preferred_last_name ELSE legal_last_name END"})
+def person_photo_filename(instance, filename):
+	#extension = os.path.splitext(filename)[1]
+	return "/".join(["people", str(instance.id), "photo"])
+
 
 class Person(models.Model):
 	GENDER_CHOICES = (
-		(1, _('male')),
-		(2, _('female')),
+		(1, _('Male')),
+		(2, _('Female')),
 	)
 
-	legal_last_name = models.CharField(max_length=32, verbose_name=_('last_name')) # [4] Surname
-	legal_first_name = models.CharField(max_length=32, verbose_name=_('first_name')) # [5] First Name
+	legal_last_name = models.CharField(max_length=32, verbose_name=_('Legal Last Name')) # [4] Surname
+	legal_first_name = models.CharField(max_length=32, verbose_name=_('Legal First Name')) # [5] First Name
 	gender = models.PositiveSmallIntegerField(_('gender'), choices=GENDER_CHOICES, default=1) # [6] Gender
 	birth_date = models.DateField(_('Date of Birth'), help_text="Use the format YYYY-MM-DD", blank=True, null=True) # [7] Date of birth
 	ethnicity = models.ManyToManyField(Ethnicity, blank=True, null=True) # [10,11,12] Ethnicity (Ethnic 1, 2 and 3)
@@ -102,21 +105,12 @@ class Person(models.Model):
 	phone = models.CharField(max_length=32, blank=True, null=True)
 	email = models.EmailField(blank=True, null=True)
 
-	photo = models.ImageField(upload_to="people", blank=True, null=True)
+	photo = models.ImageField(upload_to=person_photo_filename, blank=True, null=True)
 
-	user = models.OneToOneField(User, verbose_name='SIS Account', blank=True, null=True)
-
-	#objects = PersonManager()
+	user = models.OneToOneField(User, verbose_name=_('User Account'), blank=True, null=True)
 
 	first_name = models.CharField(max_length=32, blank=True, null=True)
-#	@property
-#	def first_name(self):
-#		return "%s" % (self.preferred_first_name or self.legal_first_name)
-
 	last_name = models.CharField(max_length=32, blank=True, null=True)
-#	@property
-#	def last_name(self):
-#		return "%s" % (self.preferred_last_name or self.legal_last_name)
 
 	def __unicode__(self):
 		return "%s, %s %s" % (self.last_name, self.first_name, self.middle_names)
@@ -128,7 +122,7 @@ class Person(models.Model):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('kapua.people.views.detail', [str(self.id)])
+		return ("kapua_person_detail", [str(self.pk)])
 
 	class Meta:
 		verbose_name = _('Person')

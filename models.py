@@ -23,29 +23,33 @@ from django.contrib.contenttypes import generic
 from mptt.models import MPTTModel, TreeForeignKey
 
 class TreeNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
-    
-    # Generic relationship to link to courses, topics or activities
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
-    
-    def __unicode__(self):
-        return u"%s %s %s" % (self.lft, self.content_object, self.rght)
-    
-    def previous(self):
-        try:
-            node = TreeNode.objects.filter(rght__lt=self.lft, tree_id=self.tree_id).order_by("-lft")[0:1].get()
-        except:
-            if self.parent:
-                node = self.parent
-            else:
-                node = None
-        return node
-    
-    def next(self):
-        try:
-            node = TreeNode.objects.filter(lft__gt=self.lft, tree_id=self.tree_id).order_by("lft")[0:1].get()
-        except:
-            node = None
-        return node
+	parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+	
+	# Generic relationship to link to courses, topics or activities
+	content_type = models.ForeignKey(ContentType)
+	object_id = models.PositiveIntegerField()
+	content_object = generic.GenericForeignKey('content_type', 'object_id')
+	
+	def __unicode__(self):
+		try:
+			o = self.content_object
+		except:
+			o = "Broken"
+		return u"%s %s %s" % (self.lft, o, self.rght)
+	
+	def previous(self):
+		try:
+			node = TreeNode.objects.filter(tree_id=self.tree_id, lft__lt=self.lft).order_by("-lft")[0:1].get()
+		except:
+			if self.parent:
+				node = self.parent
+			else:
+				node = None
+		return node
+	
+	def next(self):
+		try:
+			node = TreeNode.objects.filter(tree_id=self.tree_id, lft__gt=self.lft).order_by("lft")[0:1].get()
+		except:
+			node = None
+		return node
