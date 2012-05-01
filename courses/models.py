@@ -26,21 +26,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from attachments.models import Attachment
 from kapua.models import TreeNode
-from django.db.models.signals import post_save
 
-def create_tree_node(sender, **kwargs):
-	"""
-		This creates a treenode for a page or course so they can be rendered
-		and manipulated as a tree. MPTT.
-	"""
-	if kwargs.get('created', False) and not kwargs.get('raw', False):
-		i = kwargs.get('instance')
-		if hasattr(i, 'course'):
-			object_type = ContentType.objects.get_for_model(i.course)
-			o = TreeNode.objects.get(content_type__pk=object_type.pk, object_id=i.course_id)
-			TreeNode.objects.create(content_object=i, parent=o)
-		else:
-			TreeNode.objects.create(content_object=i)
 
 class SubjectGroup(models.Model):
 	"""
@@ -60,6 +46,7 @@ class SubjectGroup(models.Model):
 
 	class Meta:
 		ordering = ['name']
+
 
 class Subject(models.Model):
 	"""
@@ -99,6 +86,7 @@ class InstructionalYearLevel(models.Model):
 	class Meta:
 		verbose_name = _('Instructional Year Level')
 
+
 class Assessment(models.Model):
 	"""
 		An assessment can be attached to anything and allow students to
@@ -116,6 +104,7 @@ class Assessment(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
 
 class Course(models.Model):
 	"""
@@ -148,11 +137,12 @@ class Course(models.Model):
 	def __unicode__(self):
 		return unicode(self.name)
 
+	def save(self, *args, **kwargs):
+		TreeNode.objects.create(content_object=self)
+		super(Course, self).save(*args, **kwargs)
+
 	class Meta:
 		verbose_name = _('Course')
-
-post_save.connect(create_tree_node, sender=Course)
-
 
 
 class Page(models.Model):
