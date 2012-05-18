@@ -71,6 +71,10 @@ class CourseEdit(UpdateView):
 	form_class = CourseForm
 	model = Course
 	context_object_name = "course"
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(CourseEdit, self).dispatch(*args, **kwargs)
 	
 	def get_context_data(self, **kwargs):
 		# Call the base implementation first to get a context
@@ -87,6 +91,10 @@ class CourseEdit(UpdateView):
 class PageAdd(CreateView):
 	template_name = "courses/page_edit.html"
 	form_class = PageForm
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(PageAdd, self).dispatch(*args, **kwargs)
 
 	def get_course_treenode(self, course_pk):
 		"""
@@ -163,6 +171,10 @@ class PageEdit(UpdateView):
 	template_name = "courses/page_edit.html"
 	form_class = PageForm
 	model = Page
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(PageEdit, self).dispatch(*args, **kwargs)
 
 	# Have to override this method because PageForm requires the "root" and "node" arguments
 	def get_form_kwargs(self):

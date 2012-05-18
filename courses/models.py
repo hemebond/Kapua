@@ -117,7 +117,7 @@ class Course(models.Model):
 	#level = models.Something()
 	name = models.CharField(max_length=64)
 	short_name = models.CharField(max_length=16,
-                                  help_text="A short code-name for this course.",
+								  help_text="A short code-name for this course.",
 								  blank=True,
 								  null=True)
 	content = models.TextField(_('Content'))
@@ -138,8 +138,11 @@ class Course(models.Model):
 		return unicode(self.name)
 
 	def save(self, *args, **kwargs):
-		TreeNode.objects.create(content_object=self)
+		created = self.pk == None
 		super(Course, self).save(*args, **kwargs)
+
+		if created:
+			TreeNode.objects.create(content_type=ContentType.objects.get_for_model(Course), object_id=self.id)
 
 	class Meta:
 		verbose_name = _('Course')
@@ -168,13 +171,6 @@ class Page(models.Model):
 	def get_absolute_url(self):
 		return ('kapua_page_detail', [str(self.pk)])
 
-#post_save.connect(create_tree_node, sender=Page)
-
-#	def save(self):
-#		import bleach
-#		self.content = bleach.clean(self.content, tags=settings.ALLOWED_TAGS, attributes=settings.ALLOWED_ATTRS)
-#
-#		return super(Fragment, self).save()
 
 #class GradeSystem(models.Model):
 #	name = models.CharField(max_length=64)
@@ -204,7 +200,7 @@ class Submission(models.Model):
 
 class Schedule(models.Model):
 	"""
-		This is like a calendar.
+		This is a calendar.
 	"""
 	name = models.CharField(max_length=32)
 	course = models.ForeignKey(Course)
@@ -217,6 +213,7 @@ class Schedule(models.Model):
 		return self.name
 
 	def get_current_students(self):
+		# ToDo
 		return Enrolment.objects.filter(pk=self.pk) \
 				.filter(start__lte=datetime.date.today()) \
 				.filter(end__gte=datetime.date.today())
