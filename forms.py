@@ -18,22 +18,13 @@
 
 from django.utils.translation import ugettext as _
 from django.db import models
-from mptt.forms import MoveNodeForm as MPTTMoveNodeForm
-from mptt.forms import TreeNodePositionField
-from kapua.models import TreeNode
-
-
-class MoveNodeForm(MPTTMoveNodeForm):
-	class Meta:
-		model = TreeNode
-		fields = ('parent',)
 
 
 #adapted from http://www.djangosnippets.org/snippets/494/
 #using UN country and 3 char code list from http://unstats.un.org/unsd/methods/m49/m49alpha.htm
 #correct as of 17th October 2008
 COUNTRIES = (
-	('AFG', _('Afghanistan')), 
+	('AFG', _('Afghanistan')),
 	('ALA', _('Aland Islands')),
 	('ALB', _('Albania')),
 	('DZA', _('Algeria')),

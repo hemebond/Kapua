@@ -15,6 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
+from operator import attrgetter
+
 from django.forms.models import modelformset_factory, inlineformset_factory
 
 from django.core.urlresolvers import reverse
@@ -25,12 +28,20 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.views.generic import View, ListView, CreateView, UpdateView, DetailView, TemplateView
+
 from kapua.people.models import Person, Relationship
 from kapua.people.forms import PersonForm, PersonEditForm, RelationshipFormSet
-from operator import attrgetter
+from kapua.locations.forms import LocationFormSet
 
 class PersonList(ListView):
+	#template_name = "_list.html"
 	model = Person
+
+	def get_context_data(self, **kwargs):
+		context = super(PersonList, self).get_context_data(**kwargs)
+		context['object_list_fields'] = ['first_name', 'phone', 'gender']
+		#print json.dumps(context)
+		return context
 
 
 class PersonAdd(CreateView):
@@ -67,15 +78,28 @@ class PersonEdit(TemplateView):
 		person_pk = self.kwargs.get('pk', None)
 		person = get_object_or_404(Person, pk=person_pk)
 
-		formset = RelationshipFormSet(self.request.POST, self.request.FILES, instance=person)
-		form = PersonEditForm(self.request.POST, self.request.FILES, instance=person)
+		formset = RelationshipFormSet(
+			self.request.POST,
+			self.request.FILES,
+			instance=person
+		)
+		form = PersonEditForm(
+			self.request.POST,
+			self.request.FILES,
+			instance=person
+		)
 
 		if form.is_valid() and formset.is_valid():
 			form.save()
 			formset.save()
 			return HttpResponseRedirect(person.get_absolute_url())
 		else:
-			return self.render_to_response(self.get_context_data(form=form, relationship_formset=formset))
+			return self.render_to_response(
+				self.get_context_data(
+					form=form,
+					relationship_formset=formset
+				)
+			)
 
 	def get_context_data(self, **kwargs):
 		context = super(PersonEdit, self).get_context_data(**kwargs)
@@ -87,5 +111,7 @@ class PersonEdit(TemplateView):
 
 			formset = RelationshipFormSet(instance=person)
 			context['relationship_formset'] = formset
+
+			context['location_formset'] = LocationFormSet()
 
 		return context

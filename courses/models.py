@@ -17,15 +17,20 @@
 
 import datetime
 
+from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
-from django.db import models
-#from django.contrib.auth.models import User
-from kapua.students.models import Student
+
+# Generic relationship
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from attachments.models import Attachment
-from kapua.models import TreeNode
+from django.contrib.auth.models import Group
+
+# MPTT
+from mptt.models import MPTTModel, TreeForeignKey
+
+from kapua.students.models import Student
+from kapua.places.models import Place
 
 
 class SubjectGroup(models.Model):
@@ -93,7 +98,11 @@ class Assessment(models.Model):
 		make submissions to it. There will be different types of submissions
 		and some will allow online testing.
 	"""
-	name = models.CharField(max_length=32, blank=True, null=True)
+	name = models.CharField(
+		max_length=32,
+		blank=True,
+		null=True,
+	)
 	# Generic relationship to link to courses, topics or activities
 	content_type = models.ForeignKey(ContentType)
 	object_id = models.PositiveIntegerField()
@@ -112,23 +121,14 @@ class Course(models.Model):
 		of activities, assessments and learning materials.
 	"""
 	subject = models.ForeignKey(Subject, blank=True, null=True)
-	instructional_year_level = models.ForeignKey(InstructionalYearLevel, blank=True, null=True)
+	instructional_year_level = models.ForeignKey(
+		InstructionalYearLevel,
+		blank=True,
+		null=True
+	)
 	# Need a way to track the learning level of a course for primary school
 	#level = models.Something()
 	name = models.CharField(max_length=64)
-	short_name = models.CharField(max_length=16,
-								  help_text="A short code-name for this course.",
-								  blank=True,
-								  null=True)
-	content = models.TextField(_('Content'))
-
-	treenode = generic.GenericRelation(TreeNode)
-	attachments = generic.GenericRelation(Attachment)
-	assessments = generic.GenericRelation(Assessment)
-
-	# change tracking
-	created = models.DateTimeField(auto_now_add=True)
-	last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
 
 	@models.permalink
 	def get_absolute_url(self):
@@ -137,39 +137,48 @@ class Course(models.Model):
 	def __unicode__(self):
 		return unicode(self.name)
 
-	def save(self, *args, **kwargs):
-		created = self.pk == None
-		super(Course, self).save(*args, **kwargs)
-
-		if created:
-			TreeNode.objects.create(content_type=ContentType.objects.get_for_model(Course), object_id=self.id)
-
 	class Meta:
 		verbose_name = _('Course')
 
 
-class Page(models.Model):
+class Page(MPTTModel):
 	"""
-		A course page is like a university "paper"; a small component
+		A course page can be like a university 'paper'; a small component
 		grouped with other components to make up a course.
 	"""
-	course = models.ForeignKey(Course)
 	name = models.CharField(max_length=64)
-	content = models.TextField(_('Content'))
-	nodes = generic.GenericRelation(TreeNode)
-	assessments = generic.GenericRelation(Assessment)
-	attachments = generic.GenericRelation(Attachment)
+	content = models.TextField()
+	course = models.ForeignKey(Course, related_name="pages")
 
-	# change tracking
-	created = models.DateTimeField(auto_now_add=True)
-	last_modified = models.DateTimeField(auto_now=True)
+	# Use by MPTT
+	parent = TreeForeignKey(
+		'self',
+		null=True,
+		blank=True,
+		related_name='children'
+	)
+
+	# Generic relationship to embed to quizzes, activities, etc
+	content_type = models.ForeignKey(
+		ContentType,
+		null=True,
+		blank=True,
+	)
+	object_id = models.PositiveIntegerField(null=True, blank=True)
+	content_object = generic.GenericForeignKey(
+		'content_type',
+		'object_id',
+	)
 
 	def __unicode__(self):
-		return self.name
+		return u"%s" % self.name
 
 	@models.permalink
 	def get_absolute_url(self):
 		return ('kapua_page_detail', [str(self.pk)])
+
+	class Meta:
+		verbose_name = _("Page")
 
 
 #class GradeSystem(models.Model):
@@ -188,7 +197,13 @@ class Grade(models.Model):
 	"""
 	assessment = models.ForeignKey(Assessment)
 	student = models.ForeignKey(Student)
-	score = models.DecimalField(max_digits=10, decimal_places=9, blank=True, null=True)
+	score = models.DecimalField(
+		max_digits=10,
+		decimal_places=9,
+		blank=True,
+		null=True,
+	)
+
 
 class Submission(models.Model):
 	"""
@@ -197,6 +212,7 @@ class Submission(models.Model):
 	assessment = models.ForeignKey(Assessment)
 	student = models.ForeignKey(Student)
 	created = models.DateTimeField()
+
 
 class Schedule(models.Model):
 	"""
@@ -214,9 +230,11 @@ class Schedule(models.Model):
 
 	def get_current_students(self):
 		# ToDo
-		return Enrolment.objects.filter(pk=self.pk) \
-				.filter(start__lte=datetime.date.today()) \
-				.filter(end__gte=datetime.date.today())
+		return Enrolment.objects \
+			.filter(pk=self.pk) \
+			.filter(start__lte=datetime.date.today()) \
+			.filter(end__gte=datetime.date.today())
+
 
 class Activity(models.Model):
 	"""
@@ -240,6 +258,7 @@ class Activity(models.Model):
 		verbose_name = _('Activity')
 		verbose_name_plural = _('Activities')
 
+
 class AttendanceCode(models.Model):
 	"""
 		Ministry-provided codes that the administrator uses to categorise
@@ -256,6 +275,7 @@ class AttendanceCode(models.Model):
 	def __unicode__(self):
 		return self.code
 
+
 class Attendance(models.Model):
 	"""
 		Was the student at the activity?
@@ -263,6 +283,7 @@ class Attendance(models.Model):
 	activity = models.ForeignKey(Activity)
 	student = models.ForeignKey(Student)
 	code = models.ForeignKey(AttendanceCode)
+
 
 class Enrolment(models.Model):
 	"""
@@ -274,3 +295,66 @@ class Enrolment(models.Model):
 	schedule = models.ForeignKey(Schedule)
 	start = models.DateField()
 	end = models.DateField()
+
+
+class EventType(models.Model):
+	name = models.CharField(_("Name"), max_length=32)
+
+	def __unicode__(self):
+		return unicode(self.name)
+
+
+class Event(models.Model):
+	title = models.CharField(
+		max_length=128,
+		verbose_name=_("Title")
+	)
+	description = models.TextField(
+		_("Description"),
+		blank=True
+	)
+	type = models.ForeignKey(
+		EventType,
+		verbose_name=_("Event type")
+	)
+	course = models.ForeignKey(
+		Course,
+		verbose_name=_("Course"),
+		related_name="events"
+	)
+	groups = models.ManyToManyField(
+		Group,
+		verbose_name=_("Group"),
+		related_name="course_events"
+	)
+	place = models.ForeignKey(
+		Place,
+		verbose_name=_("Place"),
+		help_text=_("Where this event will occur."),
+		blank=True,
+		null=True
+	)
+	date = models.DateField(
+		_("Date"),
+		help_text=_("Date of the event. Please use the format: <em>YYY-MM-DD</em>.")
+	)
+	start_time = models.TimeField(
+		_("Start"),
+		default="09:00",
+		help_text=_("Time the event starts"),
+		blank=True
+	)
+	duration = models.IntegerField(
+		_("Duration"),
+		blank=True,
+		null=True,
+		help_text=_("Duration of event (minutes)")
+	)
+
+	class Meta:
+		verbose_name = _('Event')
+		verbose_name_plural = _('Events')
+
+	def __unicode__(self):
+		name = self.title if self.title else self.type
+		return unicode(name)

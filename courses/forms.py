@@ -17,42 +17,47 @@
 
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
-from django.forms import ModelForm
-from kapua.courses.models import Course, Page
+from django import forms
+
 from mptt.forms import TreeNodeChoiceField, TreeNodePositionField
 
-class CourseForm(ModelForm):
+from .models import Course, Page
+
+
+class CourseForm(forms.ModelForm):
 	class Meta:
 		model = Course
 
 
-class PageForm(ModelForm):
-	target = TreeNodeChoiceField(queryset=None, required=False)
-	position = TreeNodePositionField(required=False)
+class PageForm(forms.ModelForm):
+	POSITIONS = (
+		('right', _("After")),
+		('left', _("Before")),
+		('first-child', _("Under")),
+	)
 
 	class Meta:
 		model = Page
-		fields = ('name', 'content', 'target', 'position')
+		exclude = ('course', 'parent', )
 
-	def __init__(self, root, node=None, *args, **kwargs):
+	def __init__(self, valid_targets=None, *args, **kwargs):
 		super(PageForm, self).__init__(*args, **kwargs)
 
-		# Use some friendlier names
-		position_choices = (
-			('', ''),
-			('first-child', _("Under")),
-			('left', _("Before")),
-			('right', _("After"))
-		)
+		instance = kwargs.get('instance')
 
-		if node:
-			# Exclude the root node (the course) and the current page tree from the list of possible targets
-			valid_targets = root.get_descendants().exclude(Q(lft__gte=node.lft) & Q(rght__lte=node.rght))
-		else:
-			# Exclude the root node (the course) from the list of possible targets
-			valid_targets = root.get_descendants()
+		if instance:
+			# Exclude the root node (the course) and the current page tree from
+			# the list of possible targets
+			valid_targets = instance.get_root().get_descendants().exclude(
+				Q(lft__gte=instance.lft) & Q(rght__lte=instance.rght)
+			)
 
-		print valid_targets
-
-		self.fields['target'].queryset = valid_targets
-		self.fields['position'].choices = position_choices
+		if valid_targets:
+			self.fields['target'] = TreeNodeChoiceField(
+				required=False,
+				queryset=valid_targets,
+			)
+			self.fields['position'] = TreeNodePositionField(
+				required=False,
+				choices=self.POSITIONS,
+			)

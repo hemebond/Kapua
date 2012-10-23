@@ -15,22 +15,29 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.db import models
-from django.forms import ModelForm, RadioSelect
-from django.forms.models import modelformset_factory, inlineformset_factory
-from django.shortcuts import HttpResponseRedirect
+from django import forms
+from django.forms.models import inlineformset_factory
 from kapua.people.models import Person, Relationship
 
-class PersonForm(ModelForm):
+
+class PersonForm(forms.ModelForm):
 	class Meta:
 		model = Person
 		fields = ('legal_first_name', 'middle_names', 'legal_last_name', 'gender')
 
 
-class PersonEditForm(ModelForm):
+class PersonEditForm(forms.ModelForm):
 	class Meta:
 		model = Person
-		fields = ('legal_first_name', 'preferred_first_name', 'middle_names', 'legal_last_name', 'preferred_last_name', 'gender', 'birth_date', 'ethnicity', 'iwi', 'citizenship', 'privacy_indicator', 'residence', 'phone', 'email', 'photo', 'user')
+		exclude = ("first_name", "last_name")
 
 
-RelationshipFormSet = inlineformset_factory(Person, Relationship, fk_name="person", fields=('related_person', 'relationship_type',))
+RelationshipFormSet = inlineformset_factory(
+	Person,
+	Relationship,
+	fk_name="person",
+	fields=(
+		'related_person',
+		'relationship_type',
+	)
+)
