@@ -22,6 +22,7 @@ from django.views.generic import ListView, DetailView, UpdateView, \
                                  FormView, CreateView
 from django.views.generic.detail import SingleObjectMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 from .models import Course, Page
 from .forms import CourseForm, PageForm
@@ -46,20 +47,14 @@ class CourseDetail(DetailView):
 	model = Course
 	context_object_name = "course"
 
-	def get_context_data(self, **kwargs):
-		# Call the base implementation first to get a context
-		context = super(CourseDetail, self).get_context_data(**kwargs)
+	def get(self, request, *args, **kwargs):
+		self.object = self.get_object()
 
-		if context['course'].pages.exists():
-			# The "root" page is displayed on the course detail page
-			context['page'] = context['course'].pages.get(level=0)
+		if self.object.pages.exists():
+			return redirect('kapua-page-detail', self.object.pages.get(level=0).pk)
 
-			# A list of all course pages except the root page
-			context['pages'] = context['course'].pages.filter(level__gt=0)
-			if context['pages']:
-				context['next_page'] = context['pages'][0]
-
-		return context
+		context = self.get_context_data(object=self.object)
+		return self.render_to_response(context)
 
 
 class CourseEdit(UpdateView):
@@ -87,17 +82,15 @@ class PageAdd(SingleObjectMixin, FormView):
 		"""
 		form_kwargs = super(PageAdd, self).get_form_kwargs()
 
-		if self.request.method == 'GET':
-			form_kwargs.update({
-				'valid_targets': self.object.pages.filter(level__gt=0)
-			})
+		form_kwargs.update({
+			'valid_targets': self.object.pages.filter(level__gt=0)
+		})
 
 		return form_kwargs
 
 	def form_valid(self, form):
 		position = form.cleaned_data.get('position', 'last-child')
 		target = form.cleaned_data.get('target', None)
-
 		course = self.object
 
 		page = form.save(commit=False)
@@ -138,10 +131,8 @@ class PageDetail(DetailView):
 	def get_context_data(self, **kwargs):
 		# Call the base implementation first to get a context
 		context = super(PageDetail, self).get_context_data(**kwargs)
-
 		context['course'] = self.object.course
-
-		pages = context['pages'] = context['course'].pages.filter(level__gt=0)
+		pages = context['course'].pages.all()
 
 		for index, page in enumerate(pages):
 			if page.pk == self.object.pk:
@@ -153,9 +144,16 @@ class PageDetail(DetailView):
 
 				break
 
+		# Remove the root page
+		context['pages'] = pages.filter(level__gt=0)
+
+		# This gets the ancestors of the current page but exluces the
+		# root page
 		context['breadcrumbs'] = pages.filter(
 			lft__lt=self.object.lft,
 			rght__gt=self.object.rght
+		).exclude(
+			level=0
 		)
 
 		return context
@@ -181,4 +179,4 @@ class PageEdit(UpdateView):
 				position=position
 			)
 
-		return HttpResponseRedirect(self.object.get_absolute_url())
+		return redirect('kapua-page-detail', self.object.pk)

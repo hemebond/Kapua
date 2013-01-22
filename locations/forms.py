@@ -15,15 +15,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.conf.urls.defaults import *
-from kapua.courses.views import *
+from django.db import models
+from django import forms
+from django.forms.models import modelformset_factory, inlineformset_factory
+from django.shortcuts import HttpResponseRedirect
+from kapua.locations.models import Location, LocationType
 
-urlpatterns = patterns('kapua.courses.views',
-	url(r'^$', CourseList.as_view(), name="kapua-course-list"),
-	url(r'^add/$', CourseAdd.as_view(), name="kapua-course-add"),
-	url(r'^(?P<pk>\d+)/$', CourseDetail.as_view(), name="kapua-course-detail"),
-	url(r'^(?P<pk>\d+)/edit/$', CourseEdit.as_view(), name="kapua-course-edit"),
-	url(r'^(?P<pk>\d+)/add/$', PageAdd.as_view(), name="kapua-page-add"),
-	url(r'^page/(?P<pk>\d+)/$', PageDetail.as_view(), name="kapua-page-detail"),
-	url(r'^page/(?P<pk>\d+)/edit/$', PageEdit.as_view(), name="kapua-page-edit"),
-)
+
+class LocationForm(forms.Form):
+	COUNTRIES = (
+		(x.id, x.name) for x in Location.objects.filter(type__name="country")
+	)
+	country = forms.CharField(
+		max_length=255,
+		widget=forms.Select(choices=COUNTRIES)
+	)
+
+
+LocationFormSet = modelformset_factory(Location, fields=['type', 'name'])

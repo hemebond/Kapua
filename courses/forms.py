@@ -56,6 +56,7 @@ class PageForm(forms.ModelForm):
 			self.fields['target'] = TreeNodeChoiceField(
 				required=False,
 				queryset=valid_targets,
+				help_text=_("Only change if you want to move or position the page."),
 			)
 			self.fields['position'] = TreeNodePositionField(
 				required=False,

@@ -16,14 +16,11 @@
 # along with Kapua.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.conf.urls.defaults import *
-from kapua.courses.views import *
+from kapua.locations.views import *
+from django.views.generic import ListView
+from kapua.locations.models import Location
 
-urlpatterns = patterns('kapua.courses.views',
-	url(r'^$', CourseList.as_view(), name="kapua-course-list"),
-	url(r'^add/$', CourseAdd.as_view(), name="kapua-course-add"),
-	url(r'^(?P<pk>\d+)/$', CourseDetail.as_view(), name="kapua-course-detail"),
-	url(r'^(?P<pk>\d+)/edit/$', CourseEdit.as_view(), name="kapua-course-edit"),
-	url(r'^(?P<pk>\d+)/add/$', PageAdd.as_view(), name="kapua-page-add"),
-	url(r'^page/(?P<pk>\d+)/$', PageDetail.as_view(), name="kapua-page-detail"),
-	url(r'^page/(?P<pk>\d+)/edit/$', PageEdit.as_view(), name="kapua-page-edit"),
+urlpatterns = patterns('kapua.locations.views',
+	url(r'^$', ListView.as_view(model=Location), name="kapua_location_list"),
+	url(r'^add/$', LocationAdd.as_view(), name="kapua_location_add"),
 )

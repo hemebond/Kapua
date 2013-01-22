@@ -86,7 +86,7 @@ class InstructionalYearLevel(models.Model):
 	description = models.CharField(max_length=32)
 
 	def __unicode__(self):
-		return self.description
+		return u"%s" % self.description
 
 	class Meta:
 		verbose_name = _('Instructional Year Level')
@@ -112,7 +112,7 @@ class Assessment(models.Model):
 		verbose_name = _('Assessment')
 
 	def __unicode__(self):
-		return self.name
+		return u"%s" % self.name
 
 
 class Course(models.Model):
@@ -132,10 +132,10 @@ class Course(models.Model):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('kapua_course_detail', [str(self.pk)])
+		return ('kapua-course-detail', [str(self.pk)])
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return u"%s" % self.name
 
 	class Meta:
 		verbose_name = _('Course')
@@ -175,7 +175,7 @@ class Page(MPTTModel):
 
 	@models.permalink
 	def get_absolute_url(self):
-		return ('kapua_page_detail', [str(self.pk)])
+		return ('kapua-page-detail', [str(self.pk)])
 
 	class Meta:
 		verbose_name = _("Page")
@@ -226,7 +226,7 @@ class Schedule(models.Model):
 	last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
 
 	def __unicode__(self):
-		return self.name
+		return u"%s" % self.name
 
 	def get_current_students(self):
 		# ToDo
@@ -273,7 +273,7 @@ class AttendanceCode(models.Model):
 	half_day_calc = models.BooleanField()
 
 	def __unicode__(self):
-		return self.code
+		return u"%s" % self.code
 
 
 class Attendance(models.Model):
@@ -301,7 +301,7 @@ class EventType(models.Model):
 	name = models.CharField(_("Name"), max_length=32)
 
 	def __unicode__(self):
-		return unicode(self.name)
+		return u"%s" % self.name
 
 
 class Event(models.Model):
@@ -357,4 +357,4 @@ class Event(models.Model):
 
 	def __unicode__(self):
 		name = self.title if self.title else self.type
-		return unicode(name)
+		return u"%s" % name
